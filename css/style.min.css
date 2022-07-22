@@ -894,9 +894,6 @@ main {
   gap: 42px;
   justify-content: center;
 }
-.city__elem {
-  margin-bottom: 50px;
-}
 .city__link {
   display: flex;
   flex-direction: column;
