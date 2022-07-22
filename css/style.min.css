@@ -438,6 +438,8 @@ main {
   height: calc(600px + 1812 * (100vw - 320px) / 1600);
   border-radius: 50%;
   overflow: hidden;
+  background-color: #EC9B3B;
+  color: #fff;
 }
 @media (max-width: 480px) {
   .main-section {
@@ -607,6 +609,18 @@ main {
     line-height: 97px;
     padding-bottom: 80px;
   }
+}
+.main-section_blue {
+  background-color: #101f42;
+  color: #fff;
+}
+.main-section_red {
+  background-color: #F24C4C;
+  color: #fff;
+}
+.main-section_yellow {
+  background-color: #F7D716;
+  color: #212121;
 }
 
 .title {
