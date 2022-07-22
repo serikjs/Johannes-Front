@@ -4,4 +4,4 @@
 
 11 FAQ - https://serikjs.github.io/Johannes-Front/faq.html
 
-9 Calculation of the cost (Rates) - ttps://serikjs.github.io/Johannes-Front/rates.html
+9 Calculation of the cost (Rates) - https://serikjs.github.io/Johannes-Front/rates.html
