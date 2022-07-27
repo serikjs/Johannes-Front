@@ -9,3 +9,5 @@
 7 List of countries (All languages) - https://serikjs.github.io/Johannes-Front/all-languages.html
 
 15 All services (All Services/ Areas of Expertise Page) - https://serikjs.github.io/Johannes-Front/all-service.html
+
+10 Method (Methods) - https://serikjs.github.io/Johannes-Front/methods.html
