@@ -2034,4 +2034,251 @@ main {
     max-width: 300px;
   }
 }
+
+.methods__steps {
+  padding-top: 150px;
+}
+@media screen and (max-width: 991px) {
+  .methods__steps {
+    padding-top: 80px;
+  }
+}
+
+.step {
+  position: relative;
+  display: flex;
+  gap: 30px;
+  padding: 0 0 286px 0;
+}
+@media screen and (max-width: 991px) {
+  .step {
+    gap: 15px;
+    padding: 0 0 186px 0;
+  }
+}
+@media screen and (max-width: 720px) {
+  .step {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 56px 0;
+  }
+}
+.step:not(:last-child)::after {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 429px;
+  background: url("../img/dots-line.svg");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 65%;
+  content: "";
+}
+@media screen and (max-width: 1200px) {
+  .step:not(:last-child)::after {
+    background-size: 70%;
+    transform: rotate(10deg);
+  }
+}
+@media screen and (max-width: 991px) {
+  .step:not(:last-child)::after {
+    background-size: 75%;
+    transform: rotate(12deg);
+  }
+}
+@media screen and (max-width: 720px) {
+  .step:not(:last-child)::after {
+    display: none;
+  }
+}
+.step:last-child {
+  padding-bottom: 0;
+}
+.step__img {
+  max-width: 100%;
+  width: 505px;
+  height: 505px;
+  object-fit: contain;
+}
+@media screen and (max-width: 1200px) {
+  .step__img {
+    width: 470px;
+    height: 470px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .step__img {
+    width: 370px;
+    height: 370px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .step__img {
+    width: 280px;
+    height: 280px;
+  }
+}
+.step__img img {
+  height: 100%;
+  border: 12px solid #fafafa;
+  border-radius: 50%;
+}
+.step__img_cylinder {
+  flex-shrink: 2;
+  width: 693px;
+  height: 362px;
+}
+@media screen and (max-width: 720px) {
+  .step__img_cylinder {
+    width: 370px;
+    height: 370px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .step__img_cylinder {
+    width: 280px;
+    height: 280px;
+  }
+}
+.step__img_cylinder img {
+  border-radius: 0px 500px 500px 0px;
+}
+@media screen and (max-width: 720px) {
+  .step__img_cylinder img {
+    border-radius: 50%;
+  }
+}
+.step__img_petal {
+  height: 546px;
+}
+@media screen and (max-width: 1200px) {
+  .step__img_petal {
+    width: 470px;
+    height: 515px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .step__img_petal {
+    width: 370px;
+    height: 415px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .step__img_petal {
+    width: 370px;
+    height: 370px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .step__img_petal {
+    width: 280px;
+    height: 280px;
+  }
+}
+.step__img_petal img {
+  border-radius: 0px 320px;
+}
+@media screen and (max-width: 991px) {
+  .step__img_petal img {
+    border-radius: 0px 220px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .step__img_petal img {
+    border-radius: 50%;
+  }
+}
+.step__content {
+  width: 50%;
+  padding: 35px 0;
+}
+@media screen and (max-width: 720px) {
+  .step__content {
+    width: 100%;
+  }
+}
+.step__number {
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 19px;
+  padding: 3px 29px;
+  color: #101f42;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 163%;
+  border: 2px dashed #f24c4c;
+  border-radius: 4px;
+}
+@media screen and (max-width: 991px) {
+  .step__number {
+    display: none;
+  }
+}
+.step__title {
+  margin: 0;
+  margin-bottom: 25px;
+  color: #f24c4c;
+  font-weight: 700;
+  font-size: 33px;
+  line-height: 50px;
+}
+@media screen and (max-width: 991px) {
+  .step__title {
+    margin-bottom: 10px;
+    color: #101f42;
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
+.step__text {
+  margin: 0;
+  line-height: 24px;
+}
+@media screen and (max-width: 991px) {
+  .step__text {
+    font-size: 14px;
+  }
+}
+.step:nth-child(even) {
+  justify-content: flex-end;
+  padding-right: 100px;
+  text-align: right;
+}
+@media screen and (max-width: 1220px) {
+  .step:nth-child(even) {
+    padding-right: 0px;
+  }
+}
+.step:nth-child(even) .step__img {
+  order: 1;
+}
+@media screen and (max-width: 720px) {
+  .step:nth-child(even) .step__img {
+    order: 0;
+  }
+}
+.step:nth-child(even) .step__img {
+  transform: scale(-1, 1);
+}
+.step:nth-child(even)::after {
+  background: url("../img/dots-line-even.svg");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 65%;
+}
+@media screen and (max-width: 1200px) {
+  .step:nth-child(even)::after {
+    background-size: 70%;
+    transform: rotate(-12deg);
+  }
+}
+@media screen and (max-width: 991px) {
+  .step:nth-child(even)::after {
+    background-size: 75%;
+    transform: rotate(-6deg);
+  }
+}
 /*# sourceMappingURL=style.min.css.map */
