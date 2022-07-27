@@ -7,3 +7,5 @@
 9 Calculation of the cost (Rates) - https://serikjs.github.io/Johannes-Front/rates.html
 
 7 List of countries (All languages) - https://serikjs.github.io/Johannes-Front/all-languages.html
+
+15 All services (All Services/ Areas of Expertise Page) - https://serikjs.github.io/Johannes-Front/all-service.html
