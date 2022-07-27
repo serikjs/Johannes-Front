@@ -543,15 +543,16 @@ main {
 .main-section__left {
   width: 50%;
   padding-bottom: 68px;
+  padding-top: 40px;
 }
 @media (max-width: 1240px) {
   .main-section__left {
-    text-align: center;
     width: 60%;
   }
 }
 @media screen and (max-width: 991px) {
   .main-section__left {
+    text-align: center;
     width: 100%;
   }
 }
