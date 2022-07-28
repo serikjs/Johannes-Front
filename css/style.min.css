@@ -348,6 +348,9 @@ main {
 
 .services__wrapper {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 140px;
 }
 @media screen and (max-width: 776px) {
   .services__wrapper {
@@ -360,7 +363,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-right: 141px;
 }
 @media screen and (max-width: 776px) {
   .services__list {
