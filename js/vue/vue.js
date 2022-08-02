@@ -36,50 +36,50 @@ const app = new Vue({
 			],
 		},
 	},
-	created() {
-		const params = new URLSearchParams()
-		params.append('action', 'get_users')
-		axios.post(ajax_url, params).then(res => {
-			this.team = res.data
-		})
-	},
-	computed: {},
-	methods: {
-		getIsValid(name) {
-			const elem = this.contact.options.find(patt => patt.name === name)
-			if (elem.isValid != null) {
-				return 'error'
-			}
-			return ''
-		},
-		submiteContact() {
-			const error = []
+	// created() {
+	// 	const params = new URLSearchParams()
+	// 	params.append('action', 'get_users')
+	// 	axios.post(ajax_url, params).then(res => {
+	// 		this.team = res.data
+	// 	})
+	// },
+	// computed: {},
+	// methods: {
+	// 	getIsValid(name) {
+	// 		const elem = this.contact.options.find(patt => patt.name === name)
+	// 		if (elem.isValid != null) {
+	// 			return 'error'
+	// 		}
+	// 		return ''
+	// 	},
+	// 	submiteContact() {
+	// 		const error = []
 
-			this.contact.options.forEach(element => {
-				if (element.isImportant) {
-					if (!element.pattern.test(this.contact.data[element.name])) {
-						error.push(element.name)
-						element.isValid = false
-					} else {
-						element.isValid = null
-					}
-				}
-			})
+	// 		this.contact.options.forEach(element => {
+	// 			if (element.isImportant) {
+	// 				if (!element.pattern.test(this.contact.data[element.name])) {
+	// 					error.push(element.name)
+	// 					element.isValid = false
+	// 				} else {
+	// 					element.isValid = null
+	// 				}
+	// 			}
+	// 		})
 
-			if (error.length === 0) {
-				const data = JSON.stringify(this.contact.data)
-				const params = new URLSearchParams()
-				params.append('action', 'contact_as')
-				params.append('data', data)
-				axios
-					.post(ajax_url, params)
-					.then(res => {
-						console.log(res)
-					})
-					.catch(() => {
-						console.log('BAD')
-					})
-			}
-		},
-	},
+	// 		if (error.length === 0) {
+	// 			const data = JSON.stringify(this.contact.data)
+	// 			const params = new URLSearchParams()
+	// 			params.append('action', 'contact_as')
+	// 			params.append('data', data)
+	// 			axios
+	// 				.post(ajax_url, params)
+	// 				.then(res => {
+	// 					console.log(res)
+	// 				})
+	// 				.catch(() => {
+	// 					console.log('BAD')
+	// 				})
+	// 		}
+	// 	},
+	// },
 })

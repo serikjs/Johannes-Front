@@ -514,11 +514,11 @@ Vue.component('getquote', {
 			})
 
 			if (flag) {
-				axios.post('/multiple-files', filesData, {
-					headers: {
-						'Content-Type': 'multipart/form-data',
-					},
-				})
+				// axios.post('/multiple-files', filesData, {
+				// 	headers: {
+				// 		'Content-Type': 'multipart/form-data',
+				// 	},
+				// })
 			}
 			// else {
 			// }
