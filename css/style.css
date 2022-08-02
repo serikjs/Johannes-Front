@@ -1138,13 +1138,48 @@ main {
   gap: 42px;
   justify-content: center;
 }
+.city__elem {
+  flex-basis: 365px;
+  perspective: 500px;
+}
+.city__elem:hover .city__content {
+  transform: rotateY(180deg);
+}
+.city .map {
+  width: 100%;
+  height: 100%;
+}
+.city div#map a,
+.city div#map button,
+.city div.gm-bundled-control div.gmnoprint {
+  display: none !important;
+}
 .city__link {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  z-index: 2;
+}
+.city__content {
+  position: relative;
+  height: 356px;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  border-radius: 50%;
+}
+.city__front {
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
+}
+.city__front, .city__back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
 }
 .city__name {
+  text-align: center;
   font-weight: 700;
   font-size: 37.8112px;
   line-height: 57px;
@@ -1152,8 +1187,8 @@ main {
   margin-bottom: 15px;
 }
 .city__photo {
-  padding: 0;
-  margin: 0;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .city__photo img {
   width: 356px;
@@ -1165,6 +1200,9 @@ main {
     width: 280px;
     height: 280px;
   }
+}
+.city__back {
+  transform: rotateY(180deg);
 }
 
 .contact-us {
@@ -1949,9 +1987,15 @@ main {
   background: #e3e3e3;
 }
 
-.description {
-  padding-top: 70px;
+.lang__description {
+  padding-top: 150px;
 }
+@media screen and (max-width: 991px) {
+  .lang__description {
+    padding-top: 80px;
+  }
+}
+
 .description_lang {
   padding-top: 150px;
   padding-bottom: 210px;
@@ -2322,7 +2366,12 @@ main {
 
 .translations-info {
   position: relative;
-  padding-top: 64px;
+  padding-top: 110px;
+}
+@media screen and (max-width: 991px) {
+  .translations-info {
+    padding-top: 60px;
+  }
 }
 .translations-info__wrapper {
   display: flex;
@@ -2542,4 +2591,186 @@ main {
 .speciality__img {
   height: 100%;
   object-position: left top;
+}
+
+.lang__get-quote {
+  padding-top: 150px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 991px) {
+  .lang__get-quote {
+    padding-top: 70px;
+  }
+}
+
+.get-quote {
+  text-align: center;
+}
+.get-quote__title {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  margin-bottom: 50px;
+  padding: 0 71px;
+  color: #101f42;
+  font-weight: 600;
+  font-size: 70px;
+  line-height: 125.5%;
+}
+@media screen and (max-width: 991px) {
+  .get-quote__title {
+    margin-bottom: 40px;
+    padding: 0;
+    font-size: 55px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .get-quote__title {
+    font-size: 40px;
+  }
+}
+.get-quote__title::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 33px;
+  background: url("../img/left-quotes.svg");
+  content: "";
+}
+@media screen and (max-width: 991px) {
+  .get-quote__title::after {
+    display: none;
+  }
+}
+.get-quote__title::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 38px;
+  height: 33px;
+  background: url("../img/right-quotes.svg");
+  content: "";
+}
+@media screen and (max-width: 991px) {
+  .get-quote__title::before {
+    display: none;
+  }
+}
+.get-quote__form {
+  display: flex;
+  gap: 20px;
+}
+@media screen and (max-width: 991px) {
+  .get-quote__form {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.get-quote__form-section {
+  position: relative;
+  flex-basis: 400px;
+  flex-grow: 1;
+  padding: 30px 30px 46px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 112px rgba(219, 49, 54, 0.05);
+}
+@media screen and (max-width: 991px) {
+  .get-quote__form-section {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 530px;
+  }
+}
+.get-quote__form-title {
+  margin: 0;
+  margin-bottom: 39px;
+  color: #f24c4c;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 125.5%;
+}
+.get-quote__form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 14px;
+  color: #212121;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125.5%;
+  text-align: left;
+}
+.get-quote__form-input {
+  padding: 12px 21px;
+  color: #000;
+  font-weight: 400;
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+}
+.get-quote__form-textarea {
+  height: 141px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  padding: 12px 21px;
+  color: #000;
+  font-weight: 400;
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  resize: none;
+}
+.get-quote__form-submite {
+  margin-bottom: 28px;
+  padding: 15px 34px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125.5%;
+}
+.get-quote__form-info b {
+  color: #101f42;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 125.5%;
+}
+.get-quote__form-info p {
+  padding-right: 30px;
+  color: #000;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 213%;
+}
+.get-quote__form-info p a {
+  color: #f24c4c;
+  text-decoration: underline;
+}
+.get-quote__form-dropdawn {
+  position: relative;
+}
+.get-quote__form-drag {
+  position: relative;
+  padding: 46px;
+  border: 2px dashed #f24c4c;
+  border-radius: 7px;
+}
+.get-quote__form-drag input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}
+.get-quote__form-drag p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 125.5%;
+}
+.get-quote__form-drag p svg {
+  margin-bottom: 13px;
 }
