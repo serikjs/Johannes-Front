@@ -35,6 +35,13 @@ const app = new Vue({
 				},
 			],
 		},
+		pageBgImg: [
+			'img/chinese-bg-1.png',
+			'img/chinese-bg-2.png',
+			'img/chinese-bg-3.png',
+			'img/chinese-bg-4.png',
+			'img/chinese-bg-5.png',
+		],
 	},
 	// created() {
 	// 	const params = new URLSearchParams()
