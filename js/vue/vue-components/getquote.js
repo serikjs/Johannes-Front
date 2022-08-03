@@ -138,13 +138,13 @@ Vue.component('getquote', {
 	class="get-quote"
 >
 	<div class="container">
-		<h2 class="get-quote__title">Get a Quote</h2>
+		<h2 class="get-quote__title title title_large">Get a Quote</h2>
 		<form
 			@submit.prevent
 			class="get-quote__form"
 		>
 			<div class="get-quote__form-section">
-				<h3 class="get-quote__form-title">Your contact data</h3>
+				<h3 class="get-quote__form-title title title_red title_red_medium">Your contact data</h3>
 				<label class="get-quote__form-label">
 					Name of organisation
 					<input
@@ -198,7 +198,7 @@ Vue.component('getquote', {
 				/></label>
 			</div>
 			<div class="get-quote__form-section">
-				<h3 class="get-quote__form-title">The translation</h3>
+				<h3 class="get-quote__form-title title title_red title_red_medium">The translation</h3>
 				<label class="get-quote__form-label">
 					Translate from:
 					<div
@@ -354,7 +354,7 @@ Vue.component('getquote', {
 				</div>
 			</div>
 			<div class="get-quote__form-section">
-				<h3 class="get-quote__form-title">Extra information</h3>
+				<h3 class="get-quote__form-title title title_red title_red_medium">Extra information</h3>
 				<label class="get-quote__form-label">
 					Comments:
 					<textarea
@@ -366,7 +366,7 @@ Vue.component('getquote', {
 					></textarea>
 					<button
 						type="submit"
-						class="get-quote__form-submite btn btn_tomato"
+						class="get-quote__form-submite btn btn_blue"
             @click="submite()"
 					>
 						Submit
