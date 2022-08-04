@@ -1148,7 +1148,7 @@ main {
   justify-content: center;
 }
 .city__elem {
-  flex-basis: 365px;
+  flex-basis: 356px;
   perspective: 500px;
 }
 .city__elem:hover .city__content {
