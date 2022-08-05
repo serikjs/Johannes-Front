@@ -15,3 +15,5 @@
 8 Parent page (Disciplines) - https://serikjs.github.io/Johannes-Front/disciplines.html
 
 6 Country page (not a country description) (Chinese Translations) - https://serikjs.github.io/Johannes-Front/chinese.html
+
+1 Home Page - https://serikjs.github.io/Johannes-Front/
