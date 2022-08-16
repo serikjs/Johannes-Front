@@ -17,3 +17,5 @@
 6 Country page (not a country description) (Chinese Translations) - https://serikjs.github.io/Johannes-Front/chinese.html
 
 1 Home Page - https://serikjs.github.io/Johannes-Front/
+
+3 About us - https://serikjs.github.io/Johannes-Front/about-us.html 
