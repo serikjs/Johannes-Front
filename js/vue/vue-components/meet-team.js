@@ -16,21 +16,22 @@ Vue.component('meetTeam', {
 			currenPersonId: 0,
 			sliderIsOpen: false,
 			team: [],
+			last: 0,
 		}
 	},
 
 	template: `
 	<section class="meet-team container">
 				<h2 class="title title_large meet-team__title">Meet our team</h2>
-
 				<div class="meet-team__wrapper" :class="{'open':sliderIsOpen}">
 					<div class="meet-team__content">
 						<template v-for="(item, index) in team">
 							<div
 								v-if="item.personPosition == 'main'"
 								class="meet-team__person meet-team__person_big"
-								:class="{'meet-team__person_up':index===0}"
+								:class="{'meet-team__person_up':index===0,'meet-team__person_big_last':index===last}"
 								:style="{order:[index == 0 ? 2 : index]}"
+
 								@click="openSlider(item.personId)"
 							>
 								<p class="meet-team__photo" :class="{'meet-team__photo_elips ':index===0}">
@@ -187,6 +188,9 @@ Vue.component('meetTeam', {
 			name: this.team[1].personName,
 			position: this.team[1].personSubtitle,
 		}
+
+		this.last =
+			this.team.filter(pers => pers.personPosition === 'main').length - 1
 	},
 	computed: {
 		getCurrenPerson() {
