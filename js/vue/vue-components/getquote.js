@@ -137,7 +137,7 @@ Vue.component('getquote', {
 	:class="this.pageclass + '__get-quote'"
 	class="get-quote"
 >
-	<div class="container">
+	<div class="container container_small">
 		<h2 class="get-quote__title title title_large">Get a Quote</h2>
 		<form
 			@submit.prevent

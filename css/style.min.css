@@ -125,6 +125,16 @@ main {
   background: #212121;
   color: #fff;
 }
+.btn_black {
+  color: #fff;
+  background: #212121;
+  border: 1px solid transparent;
+}
+.btn_black:hover {
+  background: #fff;
+  color: #212121;
+  border: 1px solid transparent;
+}
 .btn_tomato {
   color: #fff;
   background: #f24c4c;
@@ -707,8 +717,14 @@ main {
   }
 }
 .main-section_double .main-section__right {
+  width: 60%;
   padding-top: calc(40px + 100 * (100vw - 991px) / 929);
   padding-left: calc(10px + 75 * (100vw - 991px) / 929);
+}
+@media screen and (max-width: 1300px) {
+  .main-section_double .main-section__right {
+    width: 70%;
+  }
 }
 @media screen and (max-width: 991px) {
   .main-section_double .main-section__right {
@@ -2725,13 +2741,13 @@ main {
   object-position: left top;
 }
 
-.lang__get-quote {
+.lang__get-quote,
+.general__get-quote {
   padding-top: 150px;
-  max-width: 1280px;
-  margin: 0 auto;
 }
 @media screen and (max-width: 991px) {
-  .lang__get-quote {
+  .lang__get-quote,
+.general__get-quote {
     padding-top: 70px;
   }
 }
@@ -4437,12 +4453,14 @@ main {
   display: flex;
   gap: 10px;
 }
+.blog__left {
+  width: 31%;
+  min-width: 390px;
+}
 .blog__news {
   display: flex;
   flex-direction: column;
   gap: 17px;
-  width: 31%;
-  min-width: 390px;
   color: #000000;
 }
 @media screen and (max-width: 1200px) {
@@ -4456,10 +4474,12 @@ main {
   font-size: 24px;
   line-height: 125.5%;
   color: #000000;
-  margin-bottom: 17px;
 }
 .blog__news-item {
   background-color: #fff;
+}
+.blog__news-item:hover .blog__news-learn svg {
+  margin-left: 45px;
 }
 .blog__news-link {
   display: flex;
@@ -4487,6 +4507,7 @@ main {
 }
 .blog__news-learn svg {
   margin-left: 20px;
+  transition: margin-left 0.3s linear;
 }
 .blog__list {
   display: flex;
@@ -4580,8 +4601,20 @@ main {
 .blog__btns a {
   cursor: pointer;
 }
+.blog__btns_like:hover #like1,
+.blog__btns_like:hover #like2 {
+  fill: #d9d9d9;
+}
+.blog__btns_comment:hover #comment1,
+.blog__btns_comment:hover #comment2 {
+  fill: #d9d9d9;
+}
 .blog__btns_like.active #like1,
 .blog__btns_like.active #like2 {
+  fill: #f24c4c;
+}
+.blog__btns_comment.active #comment1,
+.blog__btns_comment.active #comment2 {
   fill: #f24c4c;
 }
 
@@ -4732,6 +4765,14 @@ main {
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: 100% 100%;
+  height: 2200px;
+  width: 100%;
+}
+.main__bg_blog {
+  background-image: url("../img/blog-main-bg.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
   height: 2200px;
   width: 100%;
 }
@@ -4904,5 +4945,102 @@ main {
 .marketing-translation__link img {
   width: 100%;
   object-fit: cover;
+}
+
+.general-info {
+  padding-top: 150px;
+}
+@media screen and (max-width: 991px) {
+  .general-info {
+    padding-top: 80px;
+  }
+}
+.general-info__wrapper {
+  display: flex;
+  gap: 40px;
+}
+@media screen and (max-width: 776px) {
+  .general-info__wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.general-info__left {
+  flex-grow: 1;
+  min-width: 380px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 120px;
+  align-self: flex-start;
+}
+@media screen and (max-width: 991px) {
+  .general-info__left {
+    min-width: 320px;
+  }
+}
+@media screen and (max-width: 776px) {
+  .general-info__left {
+    position: relative;
+    align-self: auto;
+    top: 0;
+  }
+}
+@media screen and (max-width: 991px) {
+  .general-info__left .full-person {
+    max-width: 320px;
+  }
+}
+.general-info__right {
+  max-width: 1140px;
+}
+.general-info__right h2 {
+  margin: 0;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 33px;
+  line-height: 50px;
+  color: #f24c4c;
+}
+@media screen and (max-width: 991px) {
+  .general-info__right h2 {
+    font-size: 25px;
+    line-height: 38px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .general-info__right h2 {
+    font-size: 17px;
+    line-height: 30px;
+  }
+}
+.general-info__right h3 {
+  margin: 0;
+  margin-bottom: 25px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #f24c4c;
+}
+@media screen and (max-width: 776px) {
+  .general-info__right h3 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+.general-info__right p {
+  line-height: 180%;
+  color: #000000;
+}
+.general-info__right p:not(:last-child) {
+  margin-bottom: 98px;
+}
+@media screen and (max-width: 991px) {
+  .general-info__right p:not(:last-child) {
+    margin-bottom: 58px;
+  }
+}
+.general-info__right p a {
+  text-decoration: underline;
+  color: #f24c4c;
 }
 /*# sourceMappingURL=style.min.css.map */
