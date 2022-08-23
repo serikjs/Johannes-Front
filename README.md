@@ -21,3 +21,7 @@
 3 About us - https://serikjs.github.io/Johannes-Front/about-us.html 
 
 7 References Website Design - https://serikjs.github.io/Johannes-Front/referens.html
+
+5 General page with text only (new) - https://serikjs.github.io/Johannes-Front/general-page.html
+
+SubPage - https://serikjs.github.io/Johannes-Front/general-page-text.html
