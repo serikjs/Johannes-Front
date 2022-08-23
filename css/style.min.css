@@ -1008,6 +1008,9 @@ main {
   max-width: 381px;
   text-align: center;
 }
+.full-person_left {
+  text-align: left;
+}
 .full-person__photo {
   margin: 0;
   margin-bottom: 44px;
@@ -1040,6 +1043,15 @@ main {
     height: 258px;
     border-radius: 50%;
   }
+}
+.full-person__photo_comp {
+  margin-bottom: 20px;
+}
+.full-person__photo_comp img {
+  width: 100%;
+  max-width: 236px;
+  height: auto;
+  border-radius: 0;
 }
 .full-person__text {
   position: relative;
@@ -1074,6 +1086,32 @@ main {
   background: url("../img/right-quotes.svg");
   content: "";
 }
+.full-person__text_red {
+  padding: 0;
+  margin-top: 17px;
+  text-align: left;
+}
+.full-person__text_red::after {
+  position: absolute;
+  top: 5px;
+  left: -40px;
+  width: 26px;
+  height: 20px;
+  background: url("../img/left-red-quote.svg");
+  content: "";
+}
+.full-person__text_red::before {
+  position: absolute;
+  right: 0px;
+  bottom: 0;
+  width: 26px;
+  height: 20px;
+  background: url("../img/right-red-quote.svg");
+  content: "";
+}
+.full-person__text_red span {
+  color: #f24c4c;
+}
 .full-person__name {
   margin: 0;
   color: #212121;
@@ -1093,6 +1131,12 @@ main {
   font-weight: 700;
   font-size: 24.8832px;
   line-height: 37px;
+}
+.full-person__position_red {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  color: #f24c4c;
 }
 @media screen and (max-width: 991px) {
   .full-person__position {
@@ -4980,10 +5024,14 @@ main {
 }
 @media screen and (max-width: 776px) {
   .general-info__left {
+    min-width: auto;
     position: relative;
-    align-self: auto;
+    align-self: center;
     top: 0;
   }
+}
+.general-info__left_small {
+  padding: 0 40px;
 }
 @media screen and (max-width: 991px) {
   .general-info__left .full-person {
