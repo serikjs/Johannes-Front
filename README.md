@@ -25,3 +25,5 @@
 5 General page with text only (new) - https://serikjs.github.io/Johannes-Front/general-page.html
 
 SubPage - https://serikjs.github.io/Johannes-Front/general-page-text.html
+
+4 General page with picture + additional description (SubPage) - https://serikjs.github.io/Johannes-Front/general-page-img.html
