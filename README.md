@@ -27,3 +27,5 @@
 SubPage - https://serikjs.github.io/Johannes-Front/general-page-text.html
 
 4 General page with picture + additional description (SubPage) - https://serikjs.github.io/Johannes-Front/general-page-img.html
+
+12 General blog (new) - https://serikjs.github.io/Johannes-Front/blog.html
