@@ -160,6 +160,45 @@ const app = new Vue({
 		],
 		marketingTranslationFilterAll: true,
 		marketingTranslationFilterCurrent: [],
+
+		blogFilterAll: true,
+		blogFilter: [
+			{
+				title: 'Tag 1',
+				active: false,
+			},
+			{
+				title: 'Tag 2',
+				active: false,
+			},
+			{
+				title: 'Tag 3',
+				active: false,
+			},
+			{
+				title: 'Tag 4',
+				active: false,
+			},
+			{
+				title: 'Tag 5',
+				active: false,
+			},
+			{
+				title: 'Tag 6',
+				active: false,
+			},
+			{
+				title: 'Tag 7',
+				active: false,
+			},
+			{
+				title: 'Tag 8',
+				active: false,
+			},
+		],
+		blogFilterCurrent: [],
+
+		isShare: false,
 	},
 	created() {
 		// const params = new URLSearchParams()
@@ -169,7 +208,7 @@ const app = new Vue({
 		// })
 		this.marketingTranslation = this.marketingTranslationAll
 	},
-	// computed: {},
+
 	methods: {
 		// getIsValid(name) {
 		// 	const elem = this.contact.options.find(patt => patt.name === name)
@@ -222,9 +261,20 @@ const app = new Vue({
 			this.marketingTranslationFilterCurrent.push(
 				this.marketingTranslationFilter[index].title,
 			)
-
 			// Запрос на получение карточек по выбранным категориям
 			// Присвоение ответа переменной this.marketingTranslation
+		},
+		setblogFilterAll() {
+			this.blogFilterAll = true
+			this.blogFilterCurrent = []
+			this.blogFilter.forEach(element => {
+				element.active = false
+			})
+		},
+		setblogFilter(index) {
+			this.blogFilterAll = false
+			this.blogFilter[index].active = true
+			this.blogFilterCurrent.push(this.blogFilter[index].title)
 		},
 	},
 })

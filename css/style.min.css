@@ -4495,11 +4495,17 @@ main {
 }
 .blog__content {
   display: flex;
-  gap: 10px;
+  gap: 16px;
+  margin-bottom: 40px;
 }
 .blog__left {
   width: 31%;
-  min-width: 390px;
+  min-width: 415px;
+}
+@media screen and (max-width: 1200px) {
+  .blog__left {
+    display: none;
+  }
 }
 .blog__news {
   display: flex;
@@ -4507,10 +4513,8 @@ main {
   gap: 17px;
   color: #000000;
 }
-@media screen and (max-width: 1200px) {
-  .blog__news {
-    display: none;
-  }
+.blog__news:not(:last-child) {
+  margin-bottom: 65px;
 }
 .blog__news-title {
   margin: 0;
@@ -4554,21 +4558,83 @@ main {
   transition: margin-left 0.3s linear;
 }
 .blog__list {
-  display: flex;
-  flex-wrap: wrap;
-  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  margin-bottom: 40px;
+  max-width: 921px;
+}
+@media screen and (max-width: 1200px) {
+  .blog__list {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 620px) {
+  .blog__list {
+    grid-template-columns: 1fr;
+    max-width: 451px;
+  }
+}
+.blog__list_v2 .blog__item:nth-child(3n+1) {
+  display: flex;
+  gap: 35px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+@media screen and (max-width: 776px) {
+  .blog__list_v2 .blog__item:nth-child(3n+1) {
+    display: block;
+    grid-column-end: 2;
+  }
+}
+.blog__list_v2 .blog__item:nth-child(3n+1) .blog__content-inner {
+  flex-grow: 1;
+}
+.blog__list_v2 .blog__item:nth-child(3n+1) .blog__body {
+  display: block;
+  max-width: 373px;
+}
+.blog__list_v2 .blog__item:nth-child(3n+1) .blog__img {
+  margin-bottom: 0;
+  height: 100%;
+  max-height: none;
+}
+@media screen and (max-width: 776px) {
+  .blog__list_v2 .blog__item:nth-child(3n+1) .blog__img {
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .blog__list_v2 .blog__item .blog__info {
+    flex-direction: row;
+  }
+}
+@media screen and (max-width: 900px) {
+  .blog__list_v2 .blog__item .blog__info {
+    flex-direction: column;
+  }
+}
+.blog__list_v3 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 100%;
+}
+@media screen and (max-width: 991px) {
+  .blog__list_v3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 620px) {
+  .blog__list_v3 {
+    grid-template-columns: 1fr;
+    max-width: 451px;
+  }
 }
 .blog__item {
-  width: calc(50% - 10px);
   padding: 16px;
   background-color: #fff;
 }
-@media screen and (max-width: 620px) {
-  .blog__item {
-    width: 100%;
-  }
+.blog__link {
+  display: block;
 }
 .blog__img {
   max-height: 273px;
@@ -4614,6 +4680,7 @@ main {
   }
 }
 .blog__date {
+  margin: 0;
   font-weight: 600;
   letter-spacing: 0.0015em;
   color: #000000;
@@ -4633,6 +4700,7 @@ main {
   transform: translateY(-50%);
 }
 .blog__btns {
+  margin: 0;
   display: flex;
   gap: 15px;
 }
@@ -4663,7 +4731,6 @@ main {
 }
 
 .share-popup {
-  display: none;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -4816,9 +4883,14 @@ main {
   background-image: url("../img/blog-main-bg.png");
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: cover;
-  height: 2200px;
+  background-size: 100% 100%;
+  min-height: 1453px;
   width: 100%;
+}
+@media screen and (max-width: 991px) {
+  .main__bg {
+    display: none;
+  }
 }
 
 .references__descr-block {
@@ -4900,6 +4972,17 @@ main {
   text-align: center;
 }
 
+.blog__filter {
+  justify-content: center;
+  margin-bottom: 87px;
+  gap: 20px;
+}
+@media screen and (max-width: 991px) {
+  .blog__filter {
+    margin-bottom: 40px;
+  }
+}
+
 .filter {
   display: flex;
   flex-wrap: wrap;
@@ -4911,6 +4994,7 @@ main {
   line-height: 125%;
 }
 .filter__btn {
+  cursor: pointer;
   font: inherit;
   padding: 11px;
   background: rgba(87, 97, 145, 0.08);
@@ -5090,5 +5174,121 @@ main {
 .general-info__right p a {
   text-decoration: underline;
   color: #f24c4c;
+}
+
+.rewiews-blog {
+  padding-top: 150px;
+}
+@media screen and (max-width: 991px) {
+  .rewiews-blog {
+    padding-top: 80px;
+  }
+}
+.rewiews-blog_text {
+  margin: 0;
+  max-width: 991px;
+}
+.rewiews-blog_text span {
+  color: #f24c4c;
+}
+.rewiews-blog__slider {
+  position: relative;
+}
+.rewiews-blog__slide {
+  position: relative;
+  font-size: 24.5766px;
+  line-height: 37px;
+  text-align: center;
+  color: #212121;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 68px 80px 75px 80px;
+}
+@media screen and (max-width: 991px) {
+  .rewiews-blog__slide {
+    padding: 40px 80px;
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+@media screen and (max-width: 776px) {
+  .rewiews-blog__slide {
+    padding: 38px 0;
+  }
+}
+.rewiews-blog__slide::after, .rewiews-blog__slide::before {
+  position: absolute;
+  content: "";
+  width: 197px;
+  height: 197px;
+  background-image: url("../img/big-red-quote.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+@media screen and (max-width: 991px) {
+  .rewiews-blog__slide::after, .rewiews-blog__slide::before {
+    width: 97px;
+    height: 97px;
+  }
+}
+.rewiews-blog__slide::after {
+  top: 5px;
+  left: 101px;
+}
+@media screen and (max-width: 991px) {
+  .rewiews-blog__slide::after {
+    top: 35px;
+    left: 75px;
+  }
+}
+@media screen and (max-width: 776px) {
+  .rewiews-blog__slide::after {
+    left: 0;
+  }
+}
+.rewiews-blog__slide::before {
+  bottom: 0;
+  right: 150px;
+  transform: rotate(180deg);
+}
+@media screen and (max-width: 991px) {
+  .rewiews-blog__slide::before {
+    right: 75px;
+  }
+}
+@media screen and (max-width: 776px) {
+  .rewiews-blog__slide::before {
+    right: 0;
+  }
+}
+.rewiews-blog__name {
+  margin: 0;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.rewiews-blog__left-bnt, .rewiews-blog__right-bnt {
+  position: absolute;
+  cursor: pointer;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 64px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media screen and (max-width: 776px) {
+  .rewiews-blog__left-bnt, .rewiews-blog__right-bnt {
+    display: none;
+  }
+}
+.rewiews-blog__left-bnt {
+  background-image: url("../img/left-red-arrow.svg");
+}
+.rewiews-blog__right-bnt {
+  right: 0;
+  background-image: url("../img/right-red-arrow.svg");
 }
 /*# sourceMappingURL=style.min.css.map */
