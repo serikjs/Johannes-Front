@@ -1,4 +1,5 @@
 Vue.component('calculation', {
+	props: ['pageclass'],
 	data() {
 		return {
 			languages: [],
@@ -25,15 +26,17 @@ Vue.component('calculation', {
 	},
 
 	template: `
-	<section class="calculation">
+	<section :class="pageclass + ' calculation'" >
 	<div class="container calculation__wrapper">
-		<h2 class="calculation__title">Calculation module</h2>
+		<h2 class="calculation__title title title_large">
+							Calculation module
+		</h2>
 		<form
 			action=""
 			class="calculation__form"
 		>
-			<div class="calculation__form-grup calculation__form-grup--calc">
-				<h3 class="calculation__form-title">Calculation module</h3>
+			<div class="calculation__form-grup calculation__form-grup_calc">
+				<h3 class="calculation__form-title title title_red">Calculation module</h3>
 				<div class="calculation__form-pair">
 					<p class="calculation__form-subtitle">Language Pair</p>
 					<div class="calculation__form-dropdawn dropdawn" :class="{'active':isOpenSourseLang}">
@@ -92,7 +95,7 @@ Vue.component('calculation', {
 				<div class="calculation__form-pair">
 					<p class="calculation__form-subtitle">Area of expertise</p>
 					<div
-						class="calculation__form-dropdawn calculation__form-dropdawn--large dropdawn"
+						class="calculation__form-dropdawn calculation__form-dropdawn_large dropdawn"
 						:class="{'active':isOpenArea}"
 					>
 						<div class="dropdawn__select-btn dropdawn--multiple__select-btn" @click.self="isOpenArea = !isOpenArea">
@@ -179,8 +182,8 @@ Vue.component('calculation', {
 					</div>
 				</div>
 			</div>
-			<div class="calculation__form-grup calculation__form-grup--estimation">
-				<h3 class="calculation__form-title">Estimation</h3>
+			<div class="calculation__form-grup calculation__form-grup_estimation">
+				<h3 class="calculation__form-title title title_red">Estimation</h3>
 				<div class="calculation__form-pair">
 					<p class="calculation__form-subtitle">Estimated time of delivery</p>
 					<p class="calculation__form-meaning">In consultation</p>
@@ -198,7 +201,7 @@ Vue.component('calculation', {
 				</p>
 				<button
 					type="submit"
-					class="btn btn--large btn--tomato calculation__form-submite"
+					class="calculation__form-submite btn btn_tomato"
 				>
 					Request a quote
 				</button>
