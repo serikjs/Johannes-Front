@@ -31,3 +31,5 @@ SubPage - https://serikjs.github.io/Johannes-Front/general-page-text.html
 12 General blog (new) - https://serikjs.github.io/Johannes-Front/blog.html
 
 13 Internal blog (new) - https://serikjs.github.io/Johannes-Front/blog-inside.html
+
+16 Careers page - https://serikjs.github.io/Johannes-Front/careers.html
