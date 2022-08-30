@@ -92,6 +92,10 @@ main {
   min-height: 100%;
 }
 
+.error {
+  border: 1px solid #f24c4c !important;
+}
+
 .btn {
   display: inline-block;
   line-height: 24px;
@@ -5186,7 +5190,6 @@ main {
 .marketing-translation__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
   align-items: center;
   gap: 20px 30px;
 }
