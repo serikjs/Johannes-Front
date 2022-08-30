@@ -1,40 +1,90 @@
 const app = new Vue({
 	el: '#app',
 	data: {
+		// meet team
 		team: [],
 		meetTeamIsLoad: true,
-		contact: {
-			data: {
-				name: '',
-				phone: '',
-				email: '',
-				message: '',
+
+		// forms patterns
+		pattern: {
+			phone: {
+				pattern: /^[0-9]{7,14}$/,
+				message: '7-14 digits',
 			},
-			options: [
-				{
-					name: 'name',
-					pattern: /^[a-zA-Z ]{2,30}$/,
-					isValid: null,
-					isImportant: true,
-				},
-				{
-					name: 'phone',
-					pattern: /^[0-9]{7,14}$/,
-					isValid: null,
-					isImportant: false,
-				},
-				{
-					name: 'email',
-					pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-					isValid: null,
-					isImportant: true,
-				},
-				{
-					name: 'message',
-					isImportant: false,
-				},
-			],
+			name: {
+				pattern: /^[a-zA-Z ]{2,30}$/,
+				message: 'Only Latin, no more than 30 characters',
+			},
+			fullName: {
+				pattern: /^[a-zA-Z ]{2,60}$/,
+				message: 'Only Latin, no more than 60 characters',
+			},
+			email: {
+				pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+				massage: 'test.only@gmail.com',
+			},
 		},
+
+		// contact us
+		contactUs: {
+			name: {
+				value: '',
+				pattern: 'name',
+				class: '',
+				isImportant: true,
+			},
+			phone: {
+				value: '',
+				pattern: 'phone',
+				class: '',
+				isImportant: false,
+			},
+			email: {
+				value: '',
+				pattern: 'email',
+				class: '',
+				isImportant: true,
+			},
+			message: {
+				value: '',
+				isImportant: false,
+			},
+		},
+
+		// initiative
+		initiative: {
+			name: {
+				value: '',
+				pattern: 'fullName',
+				class: '',
+				isImportant: true,
+			},
+			role: {
+				value: '',
+				class: '',
+				isImportant: true,
+			},
+			email: {
+				value: '',
+				pattern: 'email',
+				class: '',
+				isImportant: true,
+			},
+			message: {
+				value: '',
+				isImportant: false,
+			},
+			files: {
+				value: '',
+				isImportant: false,
+			},
+			hear: {
+				value: '',
+				isImportant: false,
+			},
+		},
+
+		// lang page
 		pageBgImg: [
 			'img/chinese-bg-1.png',
 			'img/chinese-bg-2.png',
@@ -42,43 +92,14 @@ const app = new Vue({
 			'img/chinese-bg-4.png',
 			'img/chinese-bg-5.png',
 		],
-		featuredCases: [
-			{
-				img: 'daas.png',
-				title: 'DEUTSCHE AFRIKA STIFTUNG E.V.',
-				link: '#',
-			},
-			{
-				img: 'bezirksamt-pankow.png',
-				title: 'DEUTSCHE AFRIKA STIFTUNG E.V.',
-				link: '#',
-			},
-			{
-				img: 'bdd.png',
-				title: 'DEUTSCHE AFRIKA STIFTUNG E.V.',
-				link: '#',
-			},
-			{
-				img: 'bild.png',
-				title: 'DEUTSCHE AFRIKA STIFTUNG E.V.',
-				link: '#',
-			},
-			{
-				img: 'bjr.png',
-				title: 'DEUTSCHE AFRIKA STIFTUNG E.V.',
-				link: '#',
-			},
-			{
-				img: 'bburg.png',
-				title: 'DEUTSCHE AFRIKA STIFTUNG E.V.',
-				link: '#',
-			},
-		],
+
+		// marketing translation
+
 		marketingTranslationAll: [
 			{
 				img: 'bjr.png',
 				link: '#',
-				tags: 'Tag Number 1',
+				tags: ['Tag Number 1'],
 			},
 			{
 				img: 'bdd.png',
@@ -87,7 +108,7 @@ const app = new Vue({
 			{
 				img: 'djr.png',
 				link: '#',
-				tags: 'Tag Number 1',
+				tags: ['Tag Number 1'],
 			},
 			{
 				img: 'daas.png',
@@ -120,6 +141,7 @@ const app = new Vue({
 				tags: ['Tag Number Two'],
 			},
 		],
+		marketingTranslation: [],
 		marketingTranslationFilter: [
 			{
 				title: 'Tag Number 1',
@@ -160,7 +182,11 @@ const app = new Vue({
 		],
 		marketingTranslationFilterAll: true,
 		marketingTranslationFilterCurrent: [],
+		merketingOneLimit: 100,
 
+
+		
+		// blog
 		blogFilterAll: true,
 		blogFilter: [
 			{
@@ -206,64 +232,147 @@ const app = new Vue({
 		// axios.post(ajax_url, params).then(res => {
 		// 	this.team = res.data
 		// })
+
+		// marketing translation
 		this.marketingTranslation = this.marketingTranslationAll
 	},
 
 	methods: {
-		// getIsValid(name) {
-		// 	const elem = this.contact.options.find(patt => patt.name === name)
-		// 	if (elem.isValid != null) {
-		// 		return 'error'
-		// 	}
-		// 	return ''
-		// },
-		// submiteContact() {
-		// 	const error = []
+		// contact us
 
-		// 	this.contact.options.forEach(element => {
-		// 		if (element.isImportant) {
-		// 			if (!element.pattern.test(this.contact.data[element.name])) {
-		// 				error.push(element.name)
-		// 				element.isValid = false
-		// 			} else {
-		// 				element.isValid = null
-		// 			}
-		// 		}
-		// 	})
+		onInput(value, box) {
+			box.value = value
+			if (box.pattern)
+				box.isValid = this.isValidCheck(
+					value,
+					this.pattern[box.pattern].pattern,
+				)
+			else box.isValid = true
 
-		// 	if (error.length === 0) {
-		// 		const data = JSON.stringify(this.contact.data)
-		// 		const params = new URLSearchParams()
-		// 		params.append('action', 'contact_as')
-		// 		params.append('data', data)
-		// 		axios
-		// 			.post(ajax_url, params)
-		// 			.then(res => {
-		// 				console.log(res)
-		// 			})
-		// 			.catch(() => {
-		// 				console.log('BAD')
-		// 			})
-		// 	}
-		// },
+			box.class = box.isValid ? 'valid' : 'error'
+		},
+		isValidCheck(val, pat) {
+			return pat.test(val)
+		},
+		selectFile(box) {
+			box.value = this.$refs.file.files
+		},
+		submiteForm(box) {
+			const filesData = new FormData()
+			let flag = true
 
-		setmarketingTranslationFilterAll() {
-			this.marketingTranslationFilterAll = true
-			this.marketingTranslation = this.marketingTranslationAll
-			this.marketingTranslationFilterCurrent = []
-			this.marketingTranslationFilter.forEach(element => {
+			for (const key in box) {
+				if (box[key].pattern) {
+					box[key].isValid = this.isValidCheck(
+						box[key].value,
+						this.pattern[box[key].pattern].pattern,
+					)
+				}
+
+				if (box[key].isImportant == true && box[key].isValid == false) {
+					flag = false
+					box[key].class = 'error'
+				} else if (box[key].isImportant == true && box[key].value == '') {
+					flag = false
+					box[key].class = 'error'
+				}
+			}
+			if (flag) {
+				for (const key in box) {
+					if (key == 'files') {
+						for (let i = 0; i < box[key].value.length; i++) {
+							filesData.append(`${key}${i}`, box[key].value[i])
+						}
+					} else {
+						filesData.append(key, box[key].value)
+					}
+				}
+
+				for (var pair of filesData.entries()) {
+					console.log(pair[0] + ', ' + pair[1])
+				}
+			}
+		},
+
+		// filtered function
+
+		serchTagInTags(where, what) {
+			if (what) {
+				for (let i = 0; i < what.length; i++) {
+					if (where.indexOf(what[i]) >= 0) return true
+				}
+				return false
+			}
+			return false
+		},
+
+		filtered(all, render, filters) {
+			let filteresMass = []
+			this[all].forEach(element => {
+				if (this.serchTagInTags(this[filters], element.tags)) {
+					filteresMass.push(element)
+				}
+			})
+
+			this[render] = filteresMass
+		},
+		setFilter(index, all, render, currentFilters, filters, flag) {
+			this[flag] = false
+
+			if (this[filters][index].active === true) {
+				this[filters][index].active = false
+				this[currentFilters].splice(
+					this[currentFilters].indexOf(this[filters][index].title),
+					1,
+				)
+
+				if (this[currentFilters].length == 0) {
+					this[flag] = true
+					this[render] = this[all]
+				} else {
+					this.filtered(all, render, currentFilters)
+				}
+			} else {
+				this[filters][index].active = true
+				this[currentFilters].push(this[filters][index].title)
+
+				// Запрос на получение карточек с текущего последнего по лимиту
+				// Присвоение ответа переменной this.marketingTranslationAll
+
+				this.filtered(all, render, currentFilters)
+			}
+		},
+		setAll(all, render, currentFilters, filters, flag) {
+			this[flag] = true
+			this[render] = this[all]
+			this[currentFilters] = []
+			this[filters].forEach(element => {
 				element.active = false
 			})
 		},
-		setmarketingTranslationFilter(index) {
-			this.marketingTranslationFilterAll = false
-			this.marketingTranslationFilter[index].active = true
-			this.marketingTranslationFilterCurrent.push(
-				this.marketingTranslationFilter[index].title,
+		// marketing translation
+
+		setmarketingTranslationFilterAll() {
+			this.setAll(
+				'marketingTranslationAll',
+				'marketingTranslation',
+				'marketingTranslationFilterCurrent',
+				'marketingTranslationFilter',
+				'marketingTranslationFilterAll',
 			)
-			// Запрос на получение карточек по выбранным категориям
-			// Присвоение ответа переменной this.marketingTranslation
 		},
+		setmarketingTranslationFilter(index) {
+			this.setFilter(
+				index,
+				'marketingTranslationAll',
+				'marketingTranslation',
+				'marketingTranslationFilterCurrent',
+				'marketingTranslationFilter',
+				'marketingTranslationFilterAll',
+			)
+		},
+
+		// blog
 		setblogFilterAll() {
 			this.blogFilterAll = true
 			this.blogFilterCurrent = []
