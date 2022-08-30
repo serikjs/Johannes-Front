@@ -182,10 +182,10 @@ const app = new Vue({
 		],
 		marketingTranslationFilterAll: true,
 		marketingTranslationFilterCurrent: [],
+		merketingLimitView: 9,
+		merketingCurrentView: 9,
 		merketingOneLimit: 100,
 
-
-		
 		// blog
 		blogFilterAll: true,
 		blogFilter: [
@@ -235,6 +235,11 @@ const app = new Vue({
 
 		// marketing translation
 		this.marketingTranslation = this.marketingTranslationAll
+	},
+	computed: {
+		marketingTranslationRender() {
+			return this.marketingTranslation.slice(0, this.merketingCurrentView)
+		},
 	},
 
 	methods: {
@@ -349,6 +354,24 @@ const app = new Vue({
 			this[filters].forEach(element => {
 				element.active = false
 			})
+		},
+		showMore() {
+			if (
+				this.merketingCurrentView + this.merketingLimitView >
+				this.marketingTranslationAll.length
+			) {
+				// запрос на получение большего количества постов
+				this.marketingTranslationAll.push(...this.marketingTranslationAll)
+			}
+
+			if (this.marketingTranslationFilterCurrent.length > 0) {
+				this.filtered(
+					'marketingTranslationAll',
+					'marketingTranslation',
+					'marketingTranslationFilterCurrent',
+				)
+			}
+			this.merketingCurrentView += this.merketingLimitView
 		},
 		// marketing translation
 
