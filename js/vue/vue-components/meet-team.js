@@ -77,7 +77,7 @@ Vue.component('meetTeam', {
 							<a :href="getCurrenPerson.personMoreInfo.link" class="meet-team__slide-left">
 								<p
 									class="meet-team__slide-photo"
-									:class="{'meet-team__slide-photo_elips':getCurrenPerson.personSubtitle==='CEO'}"
+									:class="{'meet-team__slide-photo_elips':currenPersonId===0}"
 								>
 									<img :src="'img/'+getCurrenPerson.personMoreInfo.bigImageUrl" alt="" />
 								</p>
