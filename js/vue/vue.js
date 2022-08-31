@@ -1,10 +1,6 @@
 const app = new Vue({
 	el: '#app',
 	data: {
-		// meet team
-		team: [],
-		meetTeamIsLoad: true,
-
 		// forms patterns
 		pattern: {
 			phone: {
@@ -181,6 +177,7 @@ const app = new Vue({
 			},
 		],
 		marketingTranslationFilterAll: true,
+		marketingShowMore: true,
 		marketingTranslationFilterCurrent: [],
 		merketingLimitView: 9,
 		merketingCurrentView: 9,
@@ -227,13 +224,6 @@ const app = new Vue({
 		isShare: false,
 	},
 	created() {
-		// const params = new URLSearchParams()
-		// params.append('action', 'get_users')
-		// axios.post(ajax_url, params).then(res => {
-		// 	this.team = res.data
-		// })
-
-		// marketing translation
 		this.marketingTranslation = this.marketingTranslationAll
 	},
 	computed: {
@@ -312,18 +302,11 @@ const app = new Vue({
 		},
 
 		filtered(all, render, filters) {
-			let filteresMass = []
-			this[all].forEach(element => {
-				if (this.serchTagInTags(this[filters], element.tags)) {
-					filteresMass.push(element)
-				}
-			})
-
-			this[render] = filteresMass
+			this[render] = this[all].filter(el =>
+				this.serchTagInTags(this[filters], el.tags),
+			)
 		},
 		setFilter(index, all, render, currentFilters, filters, flag) {
-			this[flag] = false
-
 			if (this[filters][index].active === true) {
 				this[filters][index].active = false
 				this[currentFilters].splice(
@@ -338,6 +321,7 @@ const app = new Vue({
 					this.filtered(all, render, currentFilters)
 				}
 			} else {
+				this[flag] = false
 				this[filters][index].active = true
 				this[currentFilters].push(this[filters][index].title)
 
@@ -357,7 +341,7 @@ const app = new Vue({
 		},
 		showMore() {
 			if (
-				this.merketingCurrentView + this.merketingLimitView >
+				this.merketingCurrentView + this.merketingLimitView * 2 >
 				this.marketingTranslationAll.length
 			) {
 				// запрос на получение большего количества постов
@@ -370,6 +354,10 @@ const app = new Vue({
 					'marketingTranslation',
 					'marketingTranslationFilterCurrent',
 				)
+			}
+
+			if (this.marketingTranslationAll.length <= this.merketingCurrentView) {
+				this.marketingShowMore = false
 			}
 			this.merketingCurrentView += this.merketingLimitView
 		},

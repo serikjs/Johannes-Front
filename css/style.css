@@ -110,6 +110,14 @@ main {
   background: transparent;
   border: 1px solid #212121;
 }
+.btn:disabled {
+  background-color: rgb(158, 157, 157);
+  border: 1px solid transparent;
+  cursor: auto;
+}
+.btn:disabled:hover {
+  color: #fff;
+}
 .btn_blue {
   color: #fff;
   background: #101f42;
