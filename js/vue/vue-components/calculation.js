@@ -210,112 +210,181 @@ Vue.component('calculation', {
 	</div>
 </section>
   `,
-	// created() {
-	// 	const params = new URLSearchParams()
-	// 	params.append('action', 'get_languages')
-	// 	axios.post(ajax_url, params).then(res => {
-	// 		this.languages = res.data
-	// 	})
-	// },
-	// computed: {
-	// 	getSourseLang() {
-	// 		let arr = []
-	// 		if (this.serchSourseLang.length > 0) {
-	// 			arr = this.languages.filter(data =>
-	// 				data.title.toLowerCase().startsWith(this.serchSourseLang),
-	// 			)
-	// 			return arr
-	// 		}
-	// 		return this.languages
-	// 	},
-	// 	getTargetLang() {
-	// 		let arr = []
-	// 		if (this.serchTargetLang.length > 0) {
-	// 			arr = this.target_languages.filter(data =>
-	// 				data.title.toLowerCase().startsWith(this.serchTargetLang),
-	// 			)
-	// 			return arr
-	// 		}
-	// 		return this.target_languages
-	// 	},
-	// 	getTotal() {
-	// 		if (
-	// 			this.formData.sourse != '' &&
-	// 			this.formData.target != '' &&
-	// 			this.formData.area.length > 0 &&
-	// 			this.formData.words > 0
-	// 		) {
-	// 			const tot = this.formData.quality * this.formData.words
-	// 			this.formData.total = tot.toFixed(2)
-	// 		} else {
-	// 			this.formData.total = 0
-	// 		}
-	// 		return this.formData.total
-	// 	},
-	// },
-	// methods: {
-	// 	updateSourseLang(val, id) {
-	// 		if (val != this.formData.sourse) {
-	// 			this.formData.sourse = val
-	// 			this.isOpenSourseLang = false
+	created() {
+		// const params = new URLSearchParams()
+		// params.append('action', 'get_languages')
+		// axios.post(ajax_url, params).then(res => {
+		// 	this.languages = res.data
+		// })
+		this.languages = [
+			{
+				title: 'Afghanistan',
+			},
+			{
+				title: 'Algeria',
+			},
+			{
+				title: 'China',
+			},
+			{
+				title: 'Italy',
+			},
+			{
+				title: 'Norway',
+			},
+		]
+	},
+	computed: {
+		getSourseLang() {
+			let arr = []
+			if (this.serchSourseLang.length > 0) {
+				arr = this.languages.filter(data =>
+					data.title
+						.toLowerCase()
+						.startsWith(this.serchSourseLang.toLowerCase()),
+				)
+				return arr
+			}
+			return this.languages
+		},
+		getTargetLang() {
+			let arr = []
+			if (this.serchTargetLang.length > 0) {
+				arr = this.target_languages.filter(data =>
+					data.title
+						.toLowerCase()
+						.startsWith(this.serchTargetLang.toLowerCase()),
+				)
+				return arr
+			}
+			return this.target_languages
+		},
+		getTotal() {
+			if (
+				this.formData.sourse != '' &&
+				this.formData.target != '' &&
+				this.formData.area.length > 0 &&
+				this.formData.words > 0
+			) {
+				const tot = this.formData.quality * this.formData.words
+				this.formData.total = tot.toFixed(2)
+			} else {
+				this.formData.total = 0
+			}
+			return this.formData.total
+		},
+	},
+	methods: {
+		updateSourseLang(val, id) {
+			if (val != this.formData.sourse) {
+				this.formData.sourse = val
+				this.isOpenSourseLang = false
 
-	// 			const params = new URLSearchParams()
-	// 			params.append('action', 'get_languages_by_source_lang')
-	// 			params.append('id', id)
-	// 			axios.post(ajax_url, params).then(res => {
-	// 				this.target_languages = res.data.data
-	// 			})
-	// 		}
-	// 	},
-	// 	updateTargetLang(val, data) {
-	// 		if (val != this.formData.target) {
-	// 			this.formData.target = val
-	// 			this.isOpenTargetLang = false
+				// const params = new URLSearchParams()
+				// params.append('action', 'get_languages_by_source_lang')
+				// params.append('id', id)
+				// axios.post(ajax_url, params).then(res => {
+				// 	this.target_languages = res.data.data
+				// })
 
-	// 			this.area_expertise = data
+				this.target_languages = {
+					Afghanistan: {
+						General: {
+							fullCheck: 0.2,
+							sampleCheck: 0.3,
+						},
+						Main: {
+							fullCheck: 0.27,
+							sampleCheck: 0.48,
+						},
+					},
+					Algeria: {
+						General: {
+							fullCheck: 0.24,
+							sampleCheck: 0.35,
+						},
+						Main: {
+							fullCheck: 0.27,
+							sampleCheck: 0.48,
+						},
+					},
+					China: {
+						General: {
+							fullCheck: 0.5,
+							sampleCheck: 0.16,
+						},
+						Main: {
+							fullCheck: 0.27,
+							sampleCheck: 0.48,
+						},
+					},
+					Italy: {
+						General: {
+							fullCheck: 0.1,
+							sampleCheck: 0.39,
+						},
+						Main: {
+							fullCheck: 0.27,
+							sampleCheck: 0.48,
+						},
+					},
+					Norway: {
+						General: {
+							fullCheck: 0.27,
+							sampleCheck: 0.48,
+						},
+						Main: {
+							fullCheck: 0.27,
+							sampleCheck: 0.48,
+						},
+					},
+				}
+			}
+		},
+		updateTargetLang(val, data) {
+			if (val != this.formData.target) {
+				this.formData.target = val
+				this.isOpenTargetLang = false
 
-	// 			this.formData.area = ['General']
-	// 			this.quality = data.General
-	// 			this.formData.quality = data.General.fullCheck
-	// 		}
-	// 	},
+				console.log(val, data)
 
-	// 	updateLangTo(val) {
-	// 		if (!this.formData.translate_to.find(el => el === val)) {
-	// 			this.formData.translate_to.push(val)
-	// 		}
-	// 	},
-	// 	updateArea(val) {
-	// 		if (!this.formData.area.find(el => el === val)) {
-	// 			this.formData.area.push(val)
-	// 			this.isOpenArea = false
-	// 		}
-	// 		this.calcQuality()
-	// 	},
-	// 	delArea(index) {
-	// 		this.formData.area.splice(index, 1)
-	// 		this.calcQuality()
-	// 	},
-	// 	calcQuality() {
-	// 		let sampleCheck = 0
-	// 		let fullCheck = 0
+				this.area_expertise = data
 
-	// 		if (this.formData.area.length > 0) {
-	// 			this.formData.area.forEach(element => {
-	// 				fullCheck += this.area_expertise[element].fullCheck
-	// 				sampleCheck += this.area_expertise[element].sampleCheck
-	// 			})
+				this.formData.area = ['General']
+				this.calcQuality()
+			}
+		},
+		updateArea(val) {
+			if (!this.formData.area.find(el => el === val)) {
+				this.formData.area.push(val)
+				this.isOpenArea = false
+				this.calcQuality()
+			}
+		},
+		delArea(index) {
+			this.formData.area.splice(index, 1)
+			this.calcQuality()
+		},
+		calcQuality() {
+			let sampleCheck = 0
+			let fullCheck = 0
 
-	// 			fullCheck = (fullCheck / this.formData.area.length).toFixed(2)
-	// 			sampleCheck = (sampleCheck / this.formData.area.length).toFixed(2)
-	// 		}
+			if (this.formData.area.length > 0) {
+				this.formData.area.forEach(element => {
+					fullCheck += this.area_expertise[element].fullCheck
+					sampleCheck += this.area_expertise[element].sampleCheck
+				})
 
-	// 		this.quality = {
-	// 			fullCheck,
-	// 			sampleCheck,
-	// 		}
+				fullCheck = (fullCheck / this.formData.area.length).toFixed(2)
+				sampleCheck = (sampleCheck / this.formData.area.length).toFixed(2)
+			}
 
-	// 		this.formData.quality = fullCheck
-	// 	},
-	// },
+			this.quality = {
+				fullCheck,
+				sampleCheck,
+			}
+
+			this.formData.quality = fullCheck
+		},
+	},
 })
