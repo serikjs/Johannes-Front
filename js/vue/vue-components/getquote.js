@@ -61,6 +61,8 @@ Vue.component('getquote', {
 
 			isOpenFile: false,
 
+			isReadySend: false,
+
 			patterns: [
 				{
 					name: 'Name of organisation',
@@ -367,6 +369,7 @@ Vue.component('getquote', {
 					<button
 						type="submit"
 						class="get-quote__form-submite btn btn_blue"
+						:disabled="!isReadySend"
             @click="submite()"
 					>
 						Submit
@@ -416,6 +419,16 @@ Vue.component('getquote', {
 		selectFile() {
 			const elem = this.patterns.find(patt => patt.name === 'Drag')
 			elem.value = this.$refs.file.files
+			let url = 'http://localhost/johanens/dist/files/'
+			let xhr = new XMLHttpRequest()
+			xhr.open('POST', url, true)
+			xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
+			xhr.upload.addEventListener('progress', e => {
+				if (e.loaded === e.total) {
+					this.isReadySend = true
+				}
+				console.log((e.loaded * 100.0) / e.total)
+			})
 		},
 		updateFile(val) {
 			const elem = this.patterns.find(
