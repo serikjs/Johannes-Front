@@ -51,7 +51,6 @@ Vue.component('getquote', {
 				'United Kingdom',
 				'Vietnam',
 			],
-			meetTeamIsLoad: true,
 
 			serchLangFrom: '',
 			isOpenLangFrom: false,

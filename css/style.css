@@ -3271,7 +3271,6 @@ main {
   color: #212121;
   line-height: 25px;
   letter-spacing: 1.59px;
-  text-transform: uppercase;
 }
 @media screen and (max-width: 991px) {
   .translation-agency p {
@@ -4279,6 +4278,8 @@ main {
   display: flex;
   padding: 103px 0 119px;
   align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 }
 @media screen and (max-width: 991px) {
   .values__wrapper {
@@ -4373,46 +4374,18 @@ main {
   margin-bottom: 15px;
 }
 .values__right {
+  width: 40%;
   position: sticky;
   top: 140px;
-  display: grid;
-  width: 50%;
-  grid-template-areas: "f f" "f f" "f f" "e s" "r s" "v s" "b q" "b q" "b q";
-  gap: 20px;
-  padding-left: 75px;
   align-self: flex-start;
-}
-@media screen and (max-width: 1100px) {
-  .values__right {
-    gap: 10px;
-    padding-left: 40px;
-  }
 }
 @media screen and (max-width: 991px) {
   .values__right {
     display: none;
   }
 }
-.values-f {
-  grid-area: f;
-}
-.values-e {
-  grid-area: e;
-}
-.values-r {
-  grid-area: r;
-}
-.values-v {
-  grid-area: v;
-}
-.values-s {
-  grid-area: s;
-}
-.values-b {
-  grid-area: b;
-}
-.values-q {
-  grid-area: q;
+.values__right img {
+  max-width: 610px;
 }
 
 .vision {
@@ -6046,6 +6019,7 @@ main {
   color: #f24c4c;
 }
 .careers-calc__form-label {
+  position: relative;
   flex-direction: column;
 }
 .careers-calc__form-label_row {
@@ -6108,6 +6082,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-width: 338px;
   flex-grow: 1;
 }
 .careers-calc__input-wrapper {

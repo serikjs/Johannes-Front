@@ -107,90 +107,92 @@ Vue.component('meetTeam', {
 			</section>
   `,
 	created() {
-		this.team = [
-			{
-				personId: 0,
-				personName: 'John Crimson',
-				personImageUrl: 'meet-team-2.jpg',
-				personSubtitle: 'CEO',
-				personPosition: 'main',
-				isHaveMoreInfo: false,
-				personMoreInfo: {},
-			},
-			{
-				personId: 1,
-				personName: 'Melissa Becker',
-				personImageUrl: 'meet-team-1.jpg',
-				personSubtitle: 'Co-founder',
-				personPosition: 'main',
-				isHaveMoreInfo: false,
-				personMoreInfo: {},
-			},
+		setTimeout(() => {
+			this.team = [
+				{
+					personId: 0,
+					personName: 'John Crimson',
+					personImageUrl: 'meet-team-2.jpg',
+					personSubtitle: 'CEO',
+					personPosition: 'main',
+					isHaveMoreInfo: false,
+					personMoreInfo: {},
+				},
+				{
+					personId: 1,
+					personName: 'Melissa Becker',
+					personImageUrl: 'meet-team-1.jpg',
+					personSubtitle: 'Co-founder',
+					personPosition: 'main',
+					isHaveMoreInfo: false,
+					personMoreInfo: {},
+				},
 
-			{
-				personId: 2,
-				personName: 'Jack Billigan',
-				personImageUrl: 'meet-team-3.jpg',
-				personSubtitle: 'Co-founder',
-				isHaveMoreInfo: false,
-				personPosition: 'main',
-				personMoreInfo: {},
-			},
+				{
+					personId: 2,
+					personName: 'Jack Billigan',
+					personImageUrl: 'meet-team-3.jpg',
+					personSubtitle: 'Co-founder',
+					isHaveMoreInfo: false,
+					personPosition: 'main',
+					personMoreInfo: {},
+				},
 
-			{
-				personId: 3,
-				personName: 'Steve Coulberg',
-				personImageUrl: 'meet-team-4.jpg',
-				personSubtitle: 'SMM manager',
-				isHaveMoreInfo: false,
-				personPosition: 'other',
-				personMoreInfo: {},
-			},
-			{
-				personId: 4,
-				personName: 'Steve Coulberg',
-				personImageUrl: 'meet-team-5.jpg',
-				personSubtitle: 'SMM manager',
-				isHaveMoreInfo: false,
-				personPosition: 'other',
-				personMoreInfo: {},
-			},
-			{
-				personId: 5,
-				personName: 'Steve Coulberg',
-				personImageUrl: 'meet-team-6.jpg',
-				personSubtitle: 'SMM manager',
-				isHaveMoreInfo: false,
-				personPosition: 'other',
-				personMoreInfo: {},
-			},
-			{
-				personId: 6,
-				personName: 'Steve Coulberg',
-				personImageUrl: 'meet-team-7.jpg',
-				personSubtitle: 'SMM manager',
-				isHaveMoreInfo: false,
-				personPosition: 'other',
-				personMoreInfo: {},
-			},
-			{
-				personId: 7,
-				personName: 'Steve Coulberg',
-				personImageUrl: 'meet-team-8.jpg',
-				personSubtitle: 'SMM manager',
-				isHaveMoreInfo: false,
-				personPosition: 'other',
-				personMoreInfo: {},
-			},
-		]
-		this.nextBtn = {
-			imgUrl: this.team[1].personImageUrl,
-			name: this.team[1].personName,
-			position: this.team[1].personSubtitle,
-		}
+				{
+					personId: 3,
+					personName: 'Steve Coulberg',
+					personImageUrl: 'meet-team-4.jpg',
+					personSubtitle: 'SMM manager',
+					isHaveMoreInfo: false,
+					personPosition: 'other',
+					personMoreInfo: {},
+				},
+				{
+					personId: 4,
+					personName: 'Steve Coulberg',
+					personImageUrl: 'meet-team-5.jpg',
+					personSubtitle: 'SMM manager',
+					isHaveMoreInfo: false,
+					personPosition: 'other',
+					personMoreInfo: {},
+				},
+				{
+					personId: 5,
+					personName: 'Steve Coulberg',
+					personImageUrl: 'meet-team-6.jpg',
+					personSubtitle: 'SMM manager',
+					isHaveMoreInfo: false,
+					personPosition: 'other',
+					personMoreInfo: {},
+				},
+				{
+					personId: 6,
+					personName: 'Steve Coulberg',
+					personImageUrl: 'meet-team-7.jpg',
+					personSubtitle: 'SMM manager',
+					isHaveMoreInfo: false,
+					personPosition: 'other',
+					personMoreInfo: {},
+				},
+				{
+					personId: 7,
+					personName: 'Steve Coulberg',
+					personImageUrl: 'meet-team-8.jpg',
+					personSubtitle: 'SMM manager',
+					isHaveMoreInfo: false,
+					personPosition: 'other',
+					personMoreInfo: {},
+				},
+			]
+			this.nextBtn = {
+				imgUrl: this.team[1].personImageUrl,
+				name: this.team[1].personName,
+				position: this.team[1].personSubtitle,
+			}
 
-		this.last =
-			this.team.filter(pers => pers.personPosition === 'main').length - 1
+			this.last =
+				this.team.filter(pers => pers.personPosition === 'main').length - 1
+		}, 1000)
 	},
 	computed: {
 		getCurrenPerson() {

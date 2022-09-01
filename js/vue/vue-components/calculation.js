@@ -34,6 +34,7 @@ Vue.component('calculation', {
 		<form
 			action=""
 			class="calculation__form"
+			@submit.prevent
 		>
 			<div class="calculation__form-grup calculation__form-grup_calc">
 				<h3 class="calculation__form-title title title_red">Calculation module</h3>
@@ -202,6 +203,7 @@ Vue.component('calculation', {
 				<button
 					type="submit"
 					class="calculation__form-submite btn btn_tomato"
+					@click="send()"
 				>
 					Request a quote
 				</button>
@@ -346,8 +348,6 @@ Vue.component('calculation', {
 				this.formData.target = val
 				this.isOpenTargetLang = false
 
-				console.log(val, data)
-
 				this.area_expertise = data
 
 				this.formData.area = ['General']
@@ -385,6 +385,13 @@ Vue.component('calculation', {
 			}
 
 			this.formData.quality = fullCheck
+		},
+		send() {
+			const filesData = new FormData()
+			for (const key in this.formData) {
+				filesData.append(key, this.formData[key])
+				console.log(key, this.formData[key])
+			}
 		},
 	},
 })
