@@ -419,6 +419,7 @@ Vue.component('getquote', {
 		selectFile() {
 			const elem = this.patterns.find(patt => patt.name === 'Drag')
 			elem.value = this.$refs.file.files
+			// select file request
 			let url = 'http://localhost/johanens/dist/files/'
 			let xhr = new XMLHttpRequest()
 			xhr.open('POST', url, true)

@@ -89,146 +89,155 @@ const app = new Vue({
 			'img/chinese-bg-5.png',
 		],
 
-		// marketing translation
-
-		marketingTranslationAll: [
-			{
-				img: 'bjr.png',
-				link: '#',
-				tags: ['Tag Number 1'],
-			},
-			{
-				img: 'bdd.png',
-				link: '#',
-			},
-			{
-				img: 'djr.png',
-				link: '#',
-				tags: ['Tag Number 1'],
-			},
-			{
-				img: 'daas.png',
-				link: '#',
-				tags: ['Tag Number O', 'Tag Number M'],
-			},
-			{
-				img: 'ti.png',
-				link: '#',
-				tags: ['Tag Number O'],
-			},
-			{
-				img: 'dh.png',
-				link: '#',
-				tags: ['Tag Number Z', 'Tag Number N'],
-			},
-			{
-				img: 'vhw.png',
-				link: '#',
-				tags: ['Tag Number 1', 'Tag Number Z', 'Tag Number N'],
-			},
-			{
-				img: 'lib.png',
-				link: '#',
-				tags: ['Tag Number Two'],
-			},
-			{
-				img: 'mev.png',
-				link: '#',
-				tags: ['Tag Number Two'],
-			},
-		],
-		marketingTranslation: [],
-		marketingTranslationFilter: [
-			{
-				title: 'Tag Number 1',
-				active: false,
-			},
-			{
-				title: 'Tag Number Two',
-				active: false,
-			},
-			{
-				title: 'Tag Number Three',
-				active: false,
-			},
-			{
-				title: 'Tag Number 4',
-				active: false,
-			},
-			{
-				title: 'Tag Number O',
-				active: false,
-			},
-			{
-				title: 'Tag Number 5',
-				active: false,
-			},
-			{
-				title: 'Tag Number Z',
-				active: false,
-			},
-			{
-				title: 'Tag Number M',
-				active: false,
-			},
-			{
-				title: 'Tag Number N',
-				active: false,
-			},
-		],
-		marketingTranslationFilterAll: true,
-		marketingShowMore: true,
-		marketingTranslationFilterCurrent: [],
-		merketingLimitView: 9,
-		merketingCurrentView: 9,
-		merketingOneLimit: 100,
-
 		// blog
+		blogLenght: 0,
+		blogNews: [],
+		blogAll: [],
+		blog: [],
+		blogFilter: [],
 		blogFilterAll: true,
-		blogFilter: [
-			{
-				title: 'Tag 1',
-				active: false,
-			},
-			{
-				title: 'Tag 2',
-				active: false,
-			},
-			{
-				title: 'Tag 3',
-				active: false,
-			},
-			{
-				title: 'Tag 4',
-				active: false,
-			},
-			{
-				title: 'Tag 5',
-				active: false,
-			},
-			{
-				title: 'Tag 6',
-				active: false,
-			},
-			{
-				title: 'Tag 7',
-				active: false,
-			},
-			{
-				title: 'Tag 8',
-				active: false,
-			},
-		],
 		blogFilterCurrent: [],
+		blogLimitView: 3,
+		blogCurrentView: 3,
+		blogOneLimit: 100,
+
+		blogShare: {
+			title: '',
+			descr: '',
+			img: '',
+			link: '',
+			linkedIn: '',
+			facebook: '',
+		},
 
 		isShare: false,
 	},
 	created() {
-		this.marketingTranslation = this.marketingTranslationAll
+		setTimeout(() => {
+			this.blogLenght = 30
+			this.blogAll = [
+				{
+					id: 1,
+					title: '25 unbelievable situations that happened in Japan!',
+					descr:
+						'Schneiders-Sprach-Service (SSS) is an international translation agency founded in Berlin that can.',
+					author: 'Richard Docking',
+					img: 'blog-big.jpg',
+					link: '#',
+					tags: ['Tag Number 1'],
+					like: false,
+					comment: true,
+				},
+				{
+					id: 2,
+					title: '25 unbelievable situations that happened in Japan!',
+					descr:
+						'Schneiders-Sprach-Service (SSS) is an international translation agency founded in Berlin that can.',
+					author: 'Richard Docking',
+					img: 'blog-big.jpg',
+					link: '#',
+					tags: ['Tag Number 1'],
+					like: false,
+					comment: false,
+				},
+				{
+					id: 3,
+					title: '25 unbelievable situations that happened in Japan!',
+					descr:
+						'Schneiders-Sprach-Service (SSS) is an international translation agency founded in Berlin that can.',
+					author: 'Richard Docking',
+					img: 'blog-big.jpg',
+					link: '#',
+					tags: ['Tag Number 1'],
+					like: true,
+					comment: true,
+				},
+				{
+					id: 4,
+					title: '25 unbelievable situations that happened in Japan!',
+					descr:
+						'Schneiders-Sprach-Service (SSS) is an international translation agency founded in Berlin that can.',
+					author: 'Richard Docking',
+					img: 'blog-big.jpg',
+					link: '#',
+					tags: ['Tag Number 1'],
+					like: true,
+					comment: true,
+				},
+			]
+			this.blogFilter = [
+				{
+					title: 'Tag Number 1',
+					active: false,
+				},
+				{
+					title: 'Tag Number Two',
+					active: false,
+				},
+				{
+					title: 'Tag Number Three',
+					active: false,
+				},
+				{
+					title: 'Tag Number 4',
+					active: false,
+				},
+				{
+					title: 'Tag Number O',
+					active: false,
+				},
+				{
+					title: 'Tag Number 5',
+					active: false,
+				},
+				{
+					title: 'Tag Number Z',
+					active: false,
+				},
+				{
+					title: 'Tag Number M',
+					active: false,
+				},
+				{
+					title: 'Tag Number N',
+					active: false,
+				},
+			]
+			this.blogNews = [
+				{
+					id: 1,
+					title: '25 unbelievable situations that happened in Japan!',
+					img: 'blog-big.jpg',
+					link: '#',
+				},
+				{
+					id: 2,
+					title: '25 unbelievable situations that happened in Japan!',
+					img: 'blog-big.jpg',
+					link: '#',
+				},
+				{
+					id: 3,
+					title: '25 unbelievable situations that happened in Japan!',
+					img: 'blog-big.jpg',
+					link: '#',
+				},
+			]
+			this.blog = this.blogAll
+		}, 1000)
+	},
+	mounted() {
+		window.addEventListener('unload', () => {
+			// отправка лайков
+			console.log('sadfsadf')
+		})
 	},
 	computed: {
-		marketingTranslationRender() {
-			return this.marketingTranslation.slice(0, this.merketingCurrentView)
+		blogRender() {
+			return this.blog.slice(0, this.blogCurrentView)
+		},
+		isBlogShowMore() {
+			return this.blogAll.length <= this.blogCurrentView ? false : true
 		},
 	},
 
@@ -289,8 +298,7 @@ const app = new Vue({
 			}
 		},
 
-		// filtered function
-
+		// blog
 		serchTagInTags(where, what) {
 			if (what) {
 				for (let i = 0; i < what.length; i++) {
@@ -300,101 +308,130 @@ const app = new Vue({
 			}
 			return false
 		},
-
-		filtered(all, render, filters) {
-			this[render] = this[all].filter(el =>
-				this.serchTagInTags(this[filters], el.tags),
-			)
-		},
-		setFilter(index, all, render, currentFilters, filters, flag) {
-			if (this[filters][index].active === true) {
-				this[filters][index].active = false
-				this[currentFilters].splice(
-					this[currentFilters].indexOf(this[filters][index].title),
-					1,
-				)
-
-				if (this[currentFilters].length == 0) {
-					this[flag] = true
-					this[render] = this[all]
-				} else {
-					this.filtered(all, render, currentFilters)
+		blogShowMore() {
+			if (this.blogCurrentView + this.blogLimitView * 2 > this.blogAll.length) {
+				if (this.blogAll.length <= this.blogLenght) {
+					// запрос на получение большего количества постов
+					setTimeout(() => {
+						this.blogAll.push(
+							...[
+								{
+									id: 1,
+									title: '25 unbelievable situations that happened in Japan!',
+									descr:
+										'Schneiders-Sprach-Service (SSS) is an international translation agency founded in Berlin that can.',
+									author: 'Richard Docking',
+									img: 'blog-big.jpg',
+									link: '#',
+									tags: ['Tag Number 1'],
+								},
+								{
+									id: 2,
+									title: '25 unbelievable situations that happened in Japan!',
+									descr:
+										'Schneiders-Sprach-Service (SSS) is an international translation agency founded in Berlin that can.',
+									author: 'Richard Docking',
+									img: 'blog-big.jpg',
+									link: '#',
+									tags: ['Tag Number 1'],
+								},
+								{
+									id: 3,
+									title: '25 unbelievable situations that happened in Japan!',
+									descr:
+										'Schneiders-Sprach-Service (SSS) is an international translation agency founded in Berlin that can.',
+									author: 'Richard Docking',
+									img: 'blog-big.jpg',
+									link: '#',
+									tags: ['Tag Number 1'],
+								},
+								{
+									id: 4,
+									title: '25 unbelievable situations that happened in Japan!',
+									descr:
+										'Schneiders-Sprach-Service (SSS) is an international translation agency founded in Berlin that can.',
+									author: 'Richard Docking',
+									img: 'blog-big.jpg',
+									link: '#',
+									tags: ['Tag Number 1'],
+								},
+							],
+						)
+					}, 1000)
 				}
-			} else {
-				this[flag] = false
-				this[filters][index].active = true
-				this[currentFilters].push(this[filters][index].title)
-
-				// Запрос на получение карточек с текущего последнего по лимиту
-				// Присвоение ответа переменной this.marketingTranslationAll
-
-				this.filtered(all, render, currentFilters)
-			}
-		},
-		setAll(all, render, currentFilters, filters, flag) {
-			this[flag] = true
-			this[render] = this[all]
-			this[currentFilters] = []
-			this[filters].forEach(element => {
-				element.active = false
-			})
-		},
-		showMore() {
-			if (
-				this.merketingCurrentView + this.merketingLimitView * 2 >
-				this.marketingTranslationAll.length
-			) {
-				// запрос на получение большего количества постов
-				this.marketingTranslationAll.push(...this.marketingTranslationAll)
 			}
 
-			if (this.marketingTranslationFilterCurrent.length > 0) {
-				this.filtered(
-					'marketingTranslationAll',
-					'marketingTranslation',
-					'marketingTranslationFilterCurrent',
+			if (this.blogFilterCurrent.length > 0) {
+				this.blog = this.blogAll.filter(el =>
+					this.serchTagInTags(this.blogFilterCurrent, el.tags),
 				)
 			}
 
-			if (this.marketingTranslationAll.length <= this.merketingCurrentView) {
-				this.marketingShowMore = false
-			}
-			this.merketingCurrentView += this.merketingLimitView
+			this.blogCurrentView += this.blogLimitView
 		},
-		// marketing translation
-
-		setmarketingTranslationFilterAll() {
-			this.setAll(
-				'marketingTranslationAll',
-				'marketingTranslation',
-				'marketingTranslationFilterCurrent',
-				'marketingTranslationFilter',
-				'marketingTranslationFilterAll',
-			)
-		},
-		setmarketingTranslationFilter(index) {
-			this.setFilter(
-				index,
-				'marketingTranslationAll',
-				'marketingTranslation',
-				'marketingTranslationFilterCurrent',
-				'marketingTranslationFilter',
-				'marketingTranslationFilterAll',
-			)
-		},
-
-		// blog
 		setblogFilterAll() {
 			this.blogFilterAll = true
+			this.blog = this.blogAll
 			this.blogFilterCurrent = []
 			this.blogFilter.forEach(element => {
 				element.active = false
 			})
 		},
 		setblogFilter(index) {
-			this.blogFilterAll = false
-			this.blogFilter[index].active = true
-			this.blogFilterCurrent.push(this.blogFilter[index].title)
+			if (this.blogFilter[index].active === true) {
+				this.blogFilter[index].active = false
+				this.blogFilterCurrent.splice(
+					this.blogFilterCurrent.indexOf(this.blogFilter[index].title),
+					1,
+				)
+
+				if (this.blogFilterCurrent.length == 0) {
+					this.blogFilterAll = true
+					this.blog = this.blogAll
+				} else {
+					this.blog = this.blogAll.filter(el =>
+						this.serchTagInTags(this.blogFilterCurrent, el.tags),
+					)
+				}
+			} else {
+				this.blogFilterAll = false
+				this.blogFilter[index].active = true
+				this.blogFilterCurrent.push(this.blogFilter[index].title)
+				this.blog = this.blogAll.filter(el =>
+					this.serchTagInTags(this.blogFilterCurrent, el.tags),
+				)
+			}
+		},
+
+		showShare(elem) {
+			this.isShare = true
+			this.blogShare = elem
+
+			let url = document.location.href
+
+			document
+				.querySelector('[property="og:title"]')
+				.setAttribute('content', this.blogShare.title)
+
+			document
+				.querySelector('[property="og:image"]')
+				.setAttribute('content', this.blogShare.img)
+
+			document
+				.querySelector('[property="og:description"]')
+				.setAttribute('content', this.blogShare.descr)
+
+			document
+				.querySelector('[property="og:url"]')
+				.setAttribute('content', this.blogShare.link)
+
+			this.blogShare.linkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`
+
+			this.blogShare.facebook = `https://www.facebook.com/sharer/sharer.php?u=${url}`
+		},
+
+		copyLink() {
+			navigator.clipboard.writeText(this.blogShare.link)
 		},
 	},
 })
