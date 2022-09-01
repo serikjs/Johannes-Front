@@ -85,9 +85,9 @@ Vue.component('calculation', {
 							<ul class="dropdawn__options">
 							<li
 									v-for="(val,key,index) in getTargetLang"
-									@click="updateTargetLang(key,val)"
+									@click="updateTargetLang(val)"
 								>
-									{{key}}
+									{{val.title}}
 								</li>
 							</ul>
 						</div>
@@ -289,66 +289,81 @@ Vue.component('calculation', {
 				// 	this.target_languages = res.data.data
 				// })
 
-				this.target_languages = {
-					Afghanistan: {
-						General: {
-							fullCheck: 0.2,
-							sampleCheck: 0.3,
-						},
-						Main: {
-							fullCheck: 0.27,
-							sampleCheck: 0.48,
-						},
-					},
-					Algeria: {
-						General: {
-							fullCheck: 0.24,
-							sampleCheck: 0.35,
-						},
-						Main: {
-							fullCheck: 0.27,
-							sampleCheck: 0.48,
+				this.target_languages = [
+					{
+						title: 'Afghanistan',
+						data: {
+							General: {
+								fullCheck: 0.2,
+								sampleCheck: 0.3,
+							},
+							Main: {
+								fullCheck: 0.27,
+								sampleCheck: 0.48,
+							},
 						},
 					},
-					China: {
-						General: {
-							fullCheck: 0.5,
-							sampleCheck: 0.16,
-						},
-						Main: {
-							fullCheck: 0.27,
-							sampleCheck: 0.48,
-						},
-					},
-					Italy: {
-						General: {
-							fullCheck: 0.1,
-							sampleCheck: 0.39,
-						},
-						Main: {
-							fullCheck: 0.27,
-							sampleCheck: 0.48,
+					{
+						title: 'Algeria',
+						data: {
+							General: {
+								fullCheck: 0.24,
+								sampleCheck: 0.35,
+							},
+							Main: {
+								fullCheck: 0.27,
+								sampleCheck: 0.48,
+							},
 						},
 					},
-					Norway: {
-						General: {
-							fullCheck: 0.27,
-							sampleCheck: 0.48,
-						},
-						Main: {
-							fullCheck: 0.27,
-							sampleCheck: 0.48,
+					{
+						title: 'China',
+						data: {
+							General: {
+								fullCheck: 0.5,
+								sampleCheck: 0.16,
+							},
+							Main: {
+								fullCheck: 0.27,
+								sampleCheck: 0.48,
+							},
 						},
 					},
-				}
+					{
+						title: 'Italy',
+						data: {
+							General: {
+								fullCheck: 0.1,
+								sampleCheck: 0.39,
+							},
+							Main: {
+								fullCheck: 0.27,
+								sampleCheck: 0.48,
+							},
+						},
+					},
+					{
+						title: 'Norway',
+						data: {
+							General: {
+								fullCheck: 0.27,
+								sampleCheck: 0.48,
+							},
+							Main: {
+								fullCheck: 0.27,
+								sampleCheck: 0.48,
+							},
+						},
+					},
+				]
 			}
 		},
-		updateTargetLang(val, data) {
-			if (val != this.formData.target) {
-				this.formData.target = val
+		updateTargetLang(val) {
+			if (val.title != this.formData.target) {
+				this.formData.target = val.title
 				this.isOpenTargetLang = false
 
-				this.area_expertise = data
+				this.area_expertise = val.data
 
 				this.formData.area = ['General']
 				this.calcQuality()
