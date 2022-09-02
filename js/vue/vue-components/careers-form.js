@@ -144,6 +144,7 @@ Vue.component('careers-form', {
 					'Media / Communication',
 					'Tourism',
 					' E-Commerce / Product Descriptions',
+					'Other Specialisation',
 				],
 				// toolsTranslate: {
 				// 	'CAT Tools': [
@@ -154,6 +155,14 @@ Vue.component('careers-form', {
 				// 		'Memo Q Project Manager',
 				// 		'Memsource',
 				// 		'SmartCAT',
+				// 		'Others',
+				// 	],
+				// 	'Localisation Tools': [
+				// 		'Smartcat',
+				// 		'Phrase',
+				// 		'Localise',
+				// 		'Crowdin',
+				// 		'Others',
 				// 	],
 				// },
 				technicalSkills: [
@@ -168,6 +177,7 @@ Vue.component('careers-form', {
 					'SEO Writing',
 					'Transcreation',
 					'Creative Writing ',
+					'Other Content Creation Experience',
 				],
 				qualifications: [
 					'PHD',
@@ -175,6 +185,7 @@ Vue.component('careers-form', {
 					'Bachelor',
 					'College/ Degrees',
 					'High School Diploma',
+					'Others',
 				],
 			},
 			isTranslationExperience: false,
@@ -414,16 +425,16 @@ Vue.component('careers-form', {
 													<p class="careers-calc__input-wrapper">
 														<input
 															type="text"
-															name="firstName"
-															id="firstName"
+															name="lang1"
+															id="lang1"
 															v-model="pair.first.value"
 															class="careers-calc__form-input careers-calc__form-input_medium"
 														/>
 														<span> > </span>
 														<input
 															type="text"
-															name="firstName"
-															id="firstName"
+															name="lan2"
+															id="lang2"
 															v-model="pair.second.value"
 															class="careers-calc__form-input careers-calc__form-input_medium"
 														/>
@@ -432,6 +443,7 @@ Vue.component('careers-form', {
 											</label>
 
 											<button
+												type="button"
 												class="btn btn_tomato btn_tomato_outline careers-calc__btn"
 												@click="addMorePair()"
 											>
@@ -501,70 +513,80 @@ Vue.component('careers-form', {
 														</ul>
 													</div>
 												</div>
+											
 											</label>
+											<label class="careers-calc__form-label" v-if="careers.block1.areasExpertise.value.indexOf('Other Specialisation')>=0">
+													<input
+													type="text"
+													name="otherArea"
+													id="otherArea"
+													@change="onInputOther($event.target,careers.block1.areasExpertise)"
+													class="careers-calc__form-input" />
+											</label>
+
 											<label class="careers-calc__form-label">
-												<p class="careers-calc__form-subtitle">
-													Which tools do you use to translate?
-												</p>
+											<p class="careers-calc__form-subtitle">
+ 													Which tools do you use to translate?
+ 												</p>
 
-												<div
-													class="careers-calc__form-dropdawn dropdawn dropdawn--multiple"
-													:class="{'active':isToolsTranslate}"
-												>
-													<div
-														class="dropdawn__select-btn dropdawn--multiple__select-btn"
-														@click.self="isToolsTranslate = !isToolsTranslate"
-														
-													>
-														<template
-															v-if="careers.block1.toolsTranslate.value[0]"
-														>
-															<span
-																v-for="(item,index) in careers.block1.toolsTranslate.value"
-																@click="delToolsTranslate(index)"
-															>
-																<svg
-																	width="16"
-																	height="16"
-																	viewBox="0 0 16 16"
-																	fill="none"
-																	xmlns="http://www.w3.org/2000/svg"
-																>
-																	<path
-																		d="M5 5L8 8L5 11"
-																		stroke="white"
-																		stroke-linecap="round"
-																	/>
-																	<path
-																		d="M11.375 11L8.375 8L11.375 5"
-																		stroke="white"
-																		stroke-linecap="round"
-																	/>
-																	<circle
-																		cx="8"
-																		cy="8"
-																		r="7.5"
-																		stroke="white"
-																	/>
-																</svg>
-																{{item}}
-															</span>
-														</template>
+ 												<div
+ 													class="careers-calc__form-dropdawn dropdawn dropdawn--multiple"
+ 													:class="{'active':isToolsTranslate}"
+ 												>
+ 													<div
+ 														class="dropdawn__select-btn dropdawn--multiple__select-btn"
+ 														@click.self="isToolsTranslate = !isToolsTranslate"
 
-														<template v-else>Select anything</template>
-													</div>
-													<div class="dropdawn__content">
-														<ul class="dropdawn__options">
-															<li
-																v-for="el in careersData.toolsTranslate"
-																@click="updateToolsTranslate(el)"
-															>
-																{{el}}
-															</li>
-														</ul>
-													</div>
-												</div>
-											</label>
+ 													>
+ 														<template
+ 															v-if="careers.block1.toolsTranslate.value[0]"
+ 														>
+ 															<span
+ 																v-for="(item,index) in careers.block1.toolsTranslate.value"
+ 																@click="delToolsTranslate(index)"
+ 															>
+ 																<svg
+ 																	width="16"
+ 																	height="16"
+ 																	viewBox="0 0 16 16"
+ 																	fill="none"
+ 																	xmlns="http://www.w3.org/2000/svg"
+ 																>
+ 																	<path
+ 																		d="M5 5L8 8L5 11"
+ 																		stroke="white"
+ 																		stroke-linecap="round"
+ 																	/>
+ 																	<path
+ 																		d="M11.375 11L8.375 8L11.375 5"
+ 																		stroke="white"
+ 																		stroke-linecap="round"
+ 																	/>
+ 																	<circle
+ 																		cx="8"
+ 																		cy="8"
+ 																		r="7.5"
+ 																		stroke="white"
+ 																	/>
+ 																</svg>
+ 																{{item}}
+ 															</span>
+ 														</template>
+
+ 														<template v-else>Select anything</template>
+ 													</div>
+ 													<div class="dropdawn__content">
+ 														<ul class="dropdawn__options">
+ 															<li
+ 																v-for="el in careersData.toolsTranslate"
+ 																@click="updateToolsTranslate(el)"
+ 															>
+ 																{{el}}
+ 															</li>
+ 														</ul>
+ 													</div>
+ 												</div>
+ 											</label>
 											<div class="careers-calc__form-pair">
 												<p class="careers-calc__form-subtitle">
 													Do you have proofreading experience?
@@ -635,6 +657,7 @@ Vue.component('careers-form', {
 												</label>
 											</div>
 											<button
+												type="button"
 												class="btn btn_tomato careers-calc__btn"
 												@click="nextStep()"
 											>
@@ -789,6 +812,15 @@ Vue.component('careers-form', {
 													</div>
 												</div>
 											</label>
+													<label class="careers-calc__form-label" v-if="careers.block2.specify.value.indexOf('Other Content Creation Experience')>=0 && careers.block2.creationExperience.value == 'true'">
+													<input
+													type="text"
+													name="otherArea"
+													id="otherArea"
+													@change="onInputOther($event.target,careers.block2.specify)"
+													class="careers-calc__form-input" />
+											</label>
+
 											<label class="careers-calc__form-label">
 												<p class="careers-calc__form-subtitle">
 													Your Qualifications <span>*</span>
@@ -856,7 +888,17 @@ Vue.component('careers-form', {
 													</div>
 												</div>
 											</label>
+
+											<label class="careers-calc__form-label" v-if="careers.block2.qualifications.value.indexOf('Others')>=0">
+													<input
+													type="text"
+													name="otherQualifications"
+													id="otherArea"
+													@change="onInputOther($event.target,careers.block2.qualifications)"
+													class="careers-calc__form-input" />
+											</label>
 											<button
+												type="button"
 												class="btn btn_tomato btn_tomato_outline careers-calc__btn"
 												@click='prevStep()'
 											>
@@ -902,7 +944,7 @@ Vue.component('careers-form', {
 													</template>
 												</p>
 											</div>
-											<button class="btn btn_tomato careers-calc__btn" @click='submite()'>
+											<button type="button" class="btn btn_tomato careers-calc__btn" @click='submite()'>
 												Submit
 											</button>
 										</div>
@@ -932,6 +974,11 @@ Vue.component('careers-form', {
 
 			box.class = box.isValid ? 'valid' : 'error'
 		},
+		onInputOther(target, box) {
+			box.value.push(target.value)
+			this.careers.block1.areasExpertise.class = 'valid'
+			target.value = ''
+		},
 		isValidCheck(val, pat) {
 			return pat.test(val)
 		},
@@ -945,6 +992,7 @@ Vue.component('careers-form', {
 				this.careers.block1.translationUsed.value.push(val)
 			}
 			this.careers.block1.translationUsed.class = 'valid'
+			this.isTranslationUsed = false
 		},
 		delTranslationUsed(index) {
 			this.careers.block1.translationUsed.value.splice(index, 1)
@@ -957,10 +1005,11 @@ Vue.component('careers-form', {
 				this.careers.block1.areasExpertise.value.push(val)
 			}
 			this.careers.block1.areasExpertise.class = 'valid'
+			this.isAreasExpertise = false
 		},
 		delAreasExpertise(index) {
 			this.careers.block1.areasExpertise.value.splice(index, 1)
-			if (this.careers.block1.translationUsed.value.length <= 0) {
+			if (this.careers.block1.areasExpertise.value.length <= 0) {
 				this.careers.block1.areasExpertise.class = 'error'
 			}
 		},
@@ -978,6 +1027,7 @@ Vue.component('careers-form', {
 			if (!this.careers.block2.technicalSkills.value.find(el => el === val)) {
 				this.careers.block2.technicalSkills.value.push(val)
 			}
+			this.isTechnicalSkills = false
 		},
 		delTechnicalSkills(index) {
 			this.careers.block2.technicalSkills.value.splice(index, 1)
@@ -992,6 +1042,7 @@ Vue.component('careers-form', {
 				this.careers.block2.qualifications.value.push(val)
 			}
 			this.careers.block2.qualifications.class = 'valid'
+			this.isQualifications = false
 		},
 		delQualifications(index) {
 			this.careers.block2.qualifications.value.splice(index, 1)
@@ -1136,8 +1187,9 @@ Vue.component('careers-form', {
 						}
 					}
 				}
-
 			}
 		},
 	},
 })
+
+// let = ``

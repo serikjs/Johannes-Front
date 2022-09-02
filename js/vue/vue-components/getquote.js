@@ -451,6 +451,7 @@ Vue.component('getquote', {
 			if (!elem.value.find(el => el === val)) {
 				elem.value.push(val)
 			}
+			this.isOpenLangTo = false
 		},
 		onInputTextarea(e, name) {
 			const elem = this.patterns.find(patt => patt.name === name)

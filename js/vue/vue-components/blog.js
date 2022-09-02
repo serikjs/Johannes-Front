@@ -7,6 +7,7 @@ Vue.component('blog', {
 			blog: [],
 			blogFilter: [],
 			blogFilterAll: true,
+			isblogShowMore: false,
 			blogFilterCurrent: [],
 			blogLimitView: 3,
 			blogCurrentView: 3,
@@ -73,7 +74,7 @@ Vue.component('blog', {
 						</ul>
 						<div class="blog__content">
 							<div
-								v-show="blogFilterAll"
+								v-show="blogFilterAll && isblogShowMore == false"
 								class="blog__left"
 							>
 								<ul class="blog__news">
@@ -116,7 +117,7 @@ Vue.component('blog', {
 							</div>
 							<ul
 								class="blog__list"
-								:class="blogFilterAll ? 'blog__list_v2' : 'blog__list_v3'"
+								:class="blogClass"
 							>
 								<li
 									v-for="elem in blogRender"
@@ -235,7 +236,7 @@ Vue.component('blog', {
 						</div>
 						<button
 							v-if="isBlogShowMore"
-							@click="blogShowMore()"
+							@click="blogShowMore(); isblogShowMore = true"
 							class="btn btn_tomato discover-blog__btn"
 						>
 							Show me more!
@@ -454,6 +455,13 @@ Vue.component('blog', {
 		})
 	},
 	computed: {
+		blogClass() {
+			return this.blogFilterAll
+				? this.isblogShowMore
+					? 'blog__list_v3'
+					: 'blog__list_v2'
+				: 'blog__list_v3'
+		},
 		blogRender() {
 			return this.blog.slice(0, this.blogCurrentView)
 		},
