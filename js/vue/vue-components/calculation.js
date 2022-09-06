@@ -41,7 +41,7 @@ Vue.component('calculation', {
 				<div class="calculation__form-pair">
 					<p class="calculation__form-subtitle">Language Pair</p>
 					<div class="calculation__form-dropdawn dropdawn" :class="{'active':isOpenSourseLang}">
-						<div class="calculation__dropdawn-btn dropdawn__select-btn" @click="isOpenSourseLang = !isOpenSourseLang">
+						<div class="calculation__dropdawn-btn dropdawn__select-btn" @click.self="isDropdawnActive('isOpenSourseLang')">
 							<span v-if="formData.sourse != ''">{{formData.sourse}}</span>
 							<span v-else>Sourse language</span>
 							<i class="dropdawn__arrow"></i>
@@ -67,7 +67,7 @@ Vue.component('calculation', {
 						</div>
 					</div>
 					<div class="calculation__form-dropdawn dropdawn" :class="{'active':isOpenTargetLang}">
-						<div class="calculation__dropdawn-btn dropdawn__select-btn" @click="isOpenTargetLang = !isOpenTargetLang">
+						<div class="calculation__dropdawn-btn dropdawn__select-btn" @click.self="isDropdawnActive('isOpenTargetLang')">
 						<span v-if="formData.target != ''">{{formData.target}}</span>
 							<span v-else>Target language</span>
 							<i class="dropdawn__arrow"></i>
@@ -99,7 +99,7 @@ Vue.component('calculation', {
 						class="calculation__form-dropdawn calculation__form-dropdawn_large dropdawn"
 						:class="{'active':isOpenArea}"
 					>
-						<div class="dropdawn__select-btn dropdawn--multiple__select-btn" @click.self="isOpenArea = !isOpenArea">
+						<div class="dropdawn__select-btn dropdawn--multiple__select-btn" @click.self="isDropdawnActive('isOpenArea')">
 							<span
 								v-for="(val,index) in formData.area"
 								@click="delArea(index)"
@@ -236,6 +236,20 @@ Vue.component('calculation', {
 			},
 		]
 	},
+	mounted() {
+		document.addEventListener('click', e => {
+			console.log(e.target)
+			if (
+				!e.target.parentNode.classList.contains('dropdawn') &&
+				!e.target.parentNode.classList.contains('dropdawn__content') &&
+				!e.target.parentNode.parentNode.classList.contains('dropdawn__content')
+			) {
+				this.isOpenSourseLang = false
+				this.isOpenTargetLang = false
+				this.isOpenArea = false
+			}
+		})
+	},
 	computed: {
 		getSourseLang() {
 			let arr = []
@@ -277,6 +291,13 @@ Vue.component('calculation', {
 		},
 	},
 	methods: {
+		isDropdawnActive(key) {
+			let temp = this[key]
+			this.isOpenSourseLang = false
+			this.isOpenTargetLang = false
+			this.isOpenArea = false
+			this[key] = !temp
+		},
 		updateSourseLang(val, id) {
 			if (val != this.formData.sourse) {
 				this.formData.sourse = val

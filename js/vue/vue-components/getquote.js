@@ -208,7 +208,7 @@ Vue.component('getquote', {
 					>
 						<div
 							class="dropdawn__select-btn"
-							@click="isOpenLangFrom = !isOpenLangFrom"
+							@click.self="isDropdawnActive('isOpenLangFrom')"
 						>
 							<span>{{findValue('Translate from')}}</span>
 							<i class="dropdawn__arrow"></i>
@@ -242,7 +242,7 @@ Vue.component('getquote', {
 					>
 						<div
 							class="dropdawn__select-btn dropdawn--multiple__select-btn"
-							@click.self="isOpenLangTo = !isOpenLangTo"
+							@click.self="isDropdawnActive('isOpenLangTo')"
 						>
 							<template v-if="findValue('Translate to')[0]">
 								<span
@@ -308,7 +308,7 @@ Vue.component('getquote', {
 					>
 						<div
 							class="dropdawn__select-btn"
-							@click.self="isOpenFile = !isOpenFile"
+							@click.self="isDropdawnActive('isOpenFile')"
 						>
 							<span>{{findValue('Translatable source file available')}}</span>
 							<i class="dropdawn__arrow"></i>
@@ -392,6 +392,19 @@ Vue.component('getquote', {
 </section>
 
   `,
+	mounted() {
+		document.addEventListener('click', e => {
+			if (
+				!e.target.parentNode.classList.contains('dropdawn') &&
+				!e.target.parentNode.classList.contains('dropdawn__content') &&
+				!e.target.parentNode.parentNode.classList.contains('dropdawn__content')
+			) {
+				this.isOpenLangFrom = false
+				this.isOpenLangTo = false
+				this.isOpenFile = false
+			}
+		})
+	},
 	computed: {
 		getLangFrom() {
 			let arr = []
@@ -415,6 +428,13 @@ Vue.component('getquote', {
 		},
 	},
 	methods: {
+		isDropdawnActive(key) {
+			let temp = this[key]
+			this.isOpenLangFrom = false
+			this.isOpenLangTo = false
+			this.isOpenFile = false
+			this[key] = !temp
+		},
 		selectFile() {
 			const elem = this.patterns.find(patt => patt.name === 'Drag')
 			elem.value = this.$refs.file.files
@@ -451,7 +471,6 @@ Vue.component('getquote', {
 			if (!elem.value.find(el => el === val)) {
 				elem.value.push(val)
 			}
-			this.isOpenLangTo = false
 		},
 		onInputTextarea(e, name) {
 			const elem = this.patterns.find(patt => patt.name === name)

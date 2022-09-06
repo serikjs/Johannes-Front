@@ -146,32 +146,222 @@ Vue.component('careers-form', {
 					' E-Commerce / Product Descriptions',
 					'Other Specialisation',
 				],
-				// toolsTranslate: {
-				// 	'CAT Tools': [
-				// 		'SDL Trados Studio',
-				// 		'SDL Trados Business Manager',
-				// 		'SDL Trados Teams',
-				// 		'Memo Q Freelancer',
-				// 		'Memo Q Project Manager',
-				// 		'Memsource',
-				// 		'SmartCAT',
-				// 		'Others',
-				// 	],
-				// 	'Localisation Tools': [
-				// 		'Smartcat',
-				// 		'Phrase',
-				// 		'Localise',
-				// 		'Crowdin',
-				// 		'Others',
-				// 	],
-				// },
-				technicalSkills: [
-					'PHD',
-					'Master / German Diploma',
-					'Bachelor',
-					'College/ Degrees',
-					'High School Diploma',
-				],
+				toolsTranslate: {
+					'CAT Tools': [
+						{
+							title: 'SDL Trados Studio',
+							write: false,
+						},
+						{
+							title: 'SDL Trados Business Manager',
+							write: false,
+						},
+						{
+							title: 'SDL Trados Teams',
+							write: false,
+						},
+						{
+							title: 'Memo Q Freelancer',
+							write: false,
+						},
+						{
+							title: 'Memo Q Project Manager',
+							write: false,
+						},
+						{
+							title: 'Memsource',
+							write: false,
+						},
+						{
+							title: 'SmartCAT',
+							write: false,
+						},
+						{
+							title: 'Others',
+							write: true,
+						},
+					],
+					'Localisation Tools': [
+						{
+							title: 'Smartcat',
+							write: false,
+						},
+						{
+							title: 'Phrase',
+							write: false,
+						},
+						{
+							title: 'Localise',
+							write: false,
+						},
+						{
+							title: 'Crowdin',
+							write: false,
+						},
+						{
+							title: 'Others',
+							write: true,
+						},
+					],
+
+					'Creative / Formatting Tools': [
+						{
+							title: 'Adobe Photoshop',
+							write: false,
+						},
+						{
+							title: 'Adobe Indesign',
+							write: false,
+						},
+						{
+							title: 'Canvas',
+							write: false,
+						},
+						{
+							title: 'OCR Tools',
+							write: true,
+						},
+						{
+							title: 'Google Suite',
+							write: false,
+						},
+
+						{
+							title: 'Microsoft Suite',
+							write: false,
+						},
+						{
+							title: 'PDF Converters',
+							write: true,
+						},
+						{
+							title: 'Others',
+							write: true,
+						},
+					],
+				},
+				technicalSkills: {
+					'Technical Experience': [
+						{
+							title: 'DTP',
+							write: false,
+						},
+						{
+							title: 'Transcription',
+							write: false,
+						},
+						{
+							title: 'Website Localisation',
+							write: false,
+						},
+						{
+							title: 'SEO Translations',
+							write: false,
+						},
+						{
+							title: 'Mobile Apps',
+							write: false,
+						},
+						{
+							title: 'Software',
+							write: false,
+						},
+						{
+							title: 'Linguistic Experience (Books, E-Books etc. )',
+							write: false,
+						},
+						{
+							title: 'Other Technical Experience',
+							write: true,
+						},
+					],
+					'CMS Experience': [
+						{
+							title: 'Wordpress',
+							write: false,
+						},
+						{
+							title: 'Shopify',
+							write: false,
+						},
+						{
+							title: 'Wix',
+							write: false,
+						},
+						{
+							title: 'Others',
+							write: true,
+						},
+					],
+					'Multilingual Plugins': [
+						{
+							title: 'TranslatePress',
+							write: false,
+						},
+						{
+							title: 'WPML',
+							write: false,
+						},
+						{
+							title: 'Polylang',
+							write: false,
+						},
+						{
+							title: 'Weglot',
+							write: false,
+						},
+						{
+							title: 'MultilingualPress',
+							write: false,
+						},
+						{
+							title: 'Others',
+							write: true,
+						},
+					],
+					'Neural / MT/ AI Tools': [
+						{
+							title: 'Google Translate',
+							write: false,
+						},
+						{
+							title: 'Deepl',
+							write: false,
+						},
+						{
+							title: 'Reverso',
+							write: false,
+						},
+						{
+							title: 'MemoQ Translator Pro',
+							write: false,
+						},
+						{
+							title: 'Smartling',
+							write: false,
+						},
+						{
+							title: 'Crowdin',
+							write: false,
+						},
+						{
+							title: 'TextUnited',
+							write: false,
+						},
+						{
+							title: 'Amazon Translate',
+							write: false,
+						},
+						{
+							title: 'Memsource',
+							write: false,
+						},
+						{
+							title: 'Others',
+							write: true,
+						},
+					],
+				},
 				specify: [
 					'Content Creation (e.g. Blogs, Websites)',
 					'SEO Writing',
@@ -192,7 +382,9 @@ Vue.component('careers-form', {
 			isTranslationUsed: false,
 			isAreasExpertise: false,
 			isToolsTranslate: false,
+			toolsTranslateOther: '',
 			isTechnicalSkills: false,
+			technicalSkillsOther: '',
 			isSpecify: false,
 			isQualifications: false,
 
@@ -332,7 +524,7 @@ Vue.component('careers-form', {
 												>
 													<div
 														class="dropdawn__select-btn"
-														@click="isTranslationExperience = !isTranslationExperience"
+														@click="isDropdawnActive('isTranslationExperience')"
 													>
 														<span>
 															{{careers.block1.translationExperience.value}}
@@ -362,7 +554,7 @@ Vue.component('careers-form', {
 												>
 													<div
 														class="dropdawn__select-btn dropdawn--multiple__select-btn"
-														@click.self="isTranslationUsed = !isTranslationUsed"
+														@click.self="isDropdawnActive('isTranslationUsed')"
 														:class="careers.block1.translationUsed.class"
 													>
 														<template
@@ -462,7 +654,7 @@ Vue.component('careers-form', {
 												>
 													<div
 														class="dropdawn__select-btn dropdawn--multiple__select-btn"
-														@click.self="isAreasExpertise = !isAreasExpertise"
+														@click.self="isDropdawnActive('isAreasExpertise')"
 														:class="careers.block1.areasExpertise.class"
 													>
 														<template
@@ -535,7 +727,7 @@ Vue.component('careers-form', {
  												>
  													<div
  														class="dropdawn__select-btn dropdawn--multiple__select-btn"
- 														@click.self="isToolsTranslate = !isToolsTranslate"
+ 														@click.self="isDropdawnActive('isToolsTranslate')"
 
  													>
  														<template
@@ -577,16 +769,30 @@ Vue.component('careers-form', {
  													</div>
  													<div class="dropdawn__content">
  														<ul class="dropdawn__options">
- 															<li
- 																v-for="el in careersData.toolsTranslate"
- 																@click="updateToolsTranslate(el)"
+														<template v-for="(data,key) in careersData.toolsTranslate">
+															<p>{{key}}</p>
+															<li
+ 																v-for="el in careersData.toolsTranslate[key]"
+ 																@click="updateToolsTranslate(el.title,key,el.write)"
  															>
- 																{{el}}
+ 																{{el.title}}
  															</li>
+														</template>
+ 															
  														</ul>
  													</div>
  												</div>
  											</label>
+											</label>
+													<label class="careers-calc__form-label" v-if="toolsTranslateOther != ''">
+													{{toolsTranslateOther}}
+													<input
+													type="text"
+													name="otherArea"
+													id="otherArea"
+													@change="onInputOtherMore($event.target,careers.block1.toolsTranslate,toolsTranslateOther)"
+													class="careers-calc__form-input" />
+											</label>
 											<div class="careers-calc__form-pair">
 												<p class="careers-calc__form-subtitle">
 													Do you have proofreading experience?
@@ -686,7 +892,7 @@ Vue.component('careers-form', {
 													>
 														<div
 															class="dropdawn__select-btn dropdawn--multiple__select-btn"
-															@click.self="isTechnicalSkills = !isTechnicalSkills"
+															@click.self="isDropdawnActive('isTechnicalSkills')"
 														>
 															<template
 																v-if="careers.block2.technicalSkills.value[0]"
@@ -727,16 +933,30 @@ Vue.component('careers-form', {
 														</div>
 														<div class="dropdawn__content">
 															<ul class="dropdawn__options">
-																<li
-																	v-for="el in careersData.technicalSkills"
-																	@click="updateTechnicalSkills(el)"
-																>
-																	{{el}}
-																</li>
+																<template v-for="(data,key) in careersData.technicalSkills">
+																		<p>{{key}}</p>
+																		<li
+																			v-for="el in careersData.technicalSkills[key]"
+																			@click="updateTechnicalSkills(el.title,key,el.write)"
+																		>
+																			{{el.title}}
+																		</li>
+																</template>
+		
 															</ul>
 														</div>
 													</div>
 												</div>
+											</label>
+											</label>
+												<label class="careers-calc__form-label" v-show="technicalSkillsOther != ''">
+													{{technicalSkillsOther}}
+													<input
+													type="text"
+													name="otherArea"
+													id="otherArea"
+													@change="onInputOtherMore($event.target,careers.block2.technicalSkills,technicalSkillsOther)"
+													class="careers-calc__form-input" />
 											</label>
 											<div class="careers-calc__form-pair">
 												<p class="careers-calc__form-subtitle">
@@ -790,7 +1010,7 @@ Vue.component('careers-form', {
 												>
 													<div
 														class="dropdawn__select-btn"
-														@click="isSpecify = !isSpecify"
+														@click="isDropdawnActive('isSpecify')"
 													>
 														<span v-if='careers.block2.specify.value != ""'>
 															{{careers.block2.specify.value}}
@@ -835,7 +1055,7 @@ Vue.component('careers-form', {
 													>
 														<div
 															class="dropdawn__select-btn dropdawn--multiple__select-btn"
-															@click.self="isQualifications = !isQualifications"
+															@click.self="isDropdawnActive('isQualifications')"
 																:class="careers.block2.qualifications.class"
 														>
 															<template
@@ -960,9 +1180,35 @@ Vue.component('careers-form', {
 		this.careersSteps = document.querySelectorAll(
 			'.careers-calc__form-block_left',
 		).length
+
+		document.addEventListener('click', e => {
+			if (
+				!e.target.parentNode.classList.contains('dropdawn') &&
+				!e.target.parentNode.classList.contains('dropdawn__content')
+			) {
+				this.isTranslationExperience = false
+				this.isTranslationUsed = false
+				this.isAreasExpertise = false
+				this.isToolsTranslate = false
+				this.isTechnicalSkills = false
+				this.isSpecify = false
+				this.isQualifications = false
+			}
+		})
 	},
 	computed: {},
 	methods: {
+		isDropdawnActive(key) {
+			let temp = this[key]
+			this.isTranslationExperience = false
+			this.isTranslationUsed = false
+			this.isAreasExpertise = false
+			this.isToolsTranslate = false
+			this.isTechnicalSkills = false
+			this.isSpecify = false
+			this.isQualifications = false
+			this[key] = !temp
+		},
 		onInput(value, box) {
 			box.value = value
 			if (box.pattern)
@@ -1023,10 +1269,43 @@ Vue.component('careers-form', {
 				},
 			})
 		},
-		updateTechnicalSkills(val) {
-			if (!this.careers.block2.technicalSkills.value.find(el => el === val)) {
-				this.careers.block2.technicalSkills.value.push(val)
+		updateToolsTranslate(val, key, isWrite) {
+			if (
+				!this.careers.block1.toolsTranslate.value.find(el => el === val) &&
+				!isWrite
+			) {
+				this.careers.block1.toolsTranslate.value.push(`${key}/${val}`)
+				this.toolsTranslateOther = ''
 			}
+			if (isWrite) {
+				this.toolsTranslateOther = `${key}/${val}`
+			}
+			this.careers.block1.toolsTranslate.class = 'valid'
+			this.isToolsTranslate = false
+		},
+		delToolsTranslate(index) {
+			this.careers.block1.toolsTranslate.value.splice(index, 1)
+			if (this.careers.block1.toolsTranslate.value.length <= 0) {
+				this.careers.block1.toolsTranslate.class = 'error'
+			}
+		},
+		onInputOtherMore(target, box, key) {
+			box.value.push(`${key}/${target.value}`)
+			this.careers.block1.toolsTranslate.class = 'valid'
+			target.value = ''
+		},
+		updateTechnicalSkills(val, key, isWrite) {
+			if (
+				!this.careers.block2.technicalSkills.value.find(el => el === val) &&
+				!isWrite
+			) {
+				this.careers.block2.technicalSkills.value.push(`${key}/${val}`)
+				this.technicalSkillsOther = ''
+			}
+			if (isWrite) {
+				this.technicalSkillsOther = `${key}/${val}`
+			}
+			this.careers.block2.technicalSkills.class = 'valid'
 			this.isTechnicalSkills = false
 		},
 		delTechnicalSkills(index) {

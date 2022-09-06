@@ -234,8 +234,12 @@ Vue.component('blog', {
 								</li>
 							</ul>
 						</div>
+
+						<a href="" v-if="isMain == true" class="btn btn_tomato discover-blog__btn">
+							Show me more!
+						</a>
 						<button
-							v-if="isBlogShowMore"
+							v-if="isBlogShowMore && isMain == false"
 							@click="blogShowMore(); isblogShowMore = true"
 							class="btn btn_tomato discover-blog__btn"
 						>
@@ -336,6 +340,9 @@ Vue.component('blog', {
 
   `,
 	created() {
+		if (isMainPage) {
+			this.isMain = isMainPage
+		}
 		setTimeout(() => {
 			this.blogLenght = 30
 			this.blogAll = [
@@ -456,6 +463,14 @@ Vue.component('blog', {
 	},
 	computed: {
 		blogClass() {
+			if (this.isMain) {
+				if (!this.blogFilterAll || this.isblogShowMore) {
+					this.blogCurrentView = 3
+					return 'blog__list_v3'
+				}
+				this.blogCurrentView = 2
+				return 'blog__list_v1'
+			}
 			return this.blogFilterAll
 				? this.isblogShowMore
 					? 'blog__list_v3'
