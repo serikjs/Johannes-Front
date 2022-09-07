@@ -2898,10 +2898,6 @@ main {
 }
 .speciality__item {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  white-space: nowrap;
 }
 .speciality__item svg {
   flex-shrink: 0;
@@ -2918,6 +2914,12 @@ main {
   .speciality__item {
     white-space: normal;
   }
+}
+.speciality__item a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap;
 }
 .speciality__item a:hover {
   color: #101f42;
