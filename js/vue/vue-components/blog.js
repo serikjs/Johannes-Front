@@ -29,7 +29,16 @@ Vue.component('blog', {
 	template: `
 	<div>
 		<section class="blog main__blog">
-					<div class="main__bg main__bg_blog"></div>
+				<div class="block-bg" v-if="isMain">
+						<div class="block-bg__elem">
+							<img
+								src="img/line-bg.png"
+								alt=""
+							/>
+						</div>
+					</div>
+					<div class="main__bg main__bg_blog" v-else></div>
+					
 					<div class="container">
 						<ul class="filter blog__filter">
 							<li class="filter__item">
