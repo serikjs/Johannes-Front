@@ -7,8 +7,8 @@ Vue.component('marketing-translation', {
 			marketingTranslationFilter: [],
 			marketingTranslationFilterAll: true,
 			marketingTranslationFilterCurrent: [],
-			merketingLimitView: 9,
-			merketingCurrentView: 9,
+			merketingLimitView: 6,
+			merketingCurrentView: 6,
 			merketingOneLimit: 100,
 		}
 	},
@@ -57,32 +57,40 @@ Vue.component('marketing-translation', {
 								</li>
 							</ul>
 						</div>
+					</div>
+					<div class="container">
 						<div class="marketing-translation__bottom">
-							<ul class="marketing-translation__list">
-								<li
-									v-for="item in marketingTranslationRender"
-									class="marketing-translation__item"
-								>
-									<a
-										class="marketing-translation__link"
-										:href="item.link"
-									>
+								<div class="marketing-translation__bottom-bg">
 										<img
-											:src="'img/' + item.img"
+											src="img/marketing-bg.png"
 											alt=""
 										/>
-									</a>
-								</li>
-							</ul>
-						</div>
-
-						<button
+								</div>
+								<ul class="marketing-translation__list">
+									<li
+										v-for="item in marketingTranslationRender"
+										class="marketing-translation__item"
+									>
+										<a
+											class="marketing-translation__link"
+											:href="item.link"
+										>
+											<p>{{item.title}}</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<button
 							class="btn btn_tomato discover-blog__btn"
 							v-if="isMarketingShowMore"
 							@click="marketingShowMore()"
 						>
 							Show me more!
 						</button>
+					</div>
+						
+
+						
 					</div>
 				</section>
   `,
@@ -91,53 +99,53 @@ Vue.component('marketing-translation', {
 			this.marketingTranslationLenght = 30
 			this.marketingTranslationAll = [
 				{
-					img: 'bjr.png',
+					title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG',
 					link: '#',
 					tags: ['Tag Number 1'],
 				},
 				{
-					img: 'bdd.png',
+					title: 'LANDERINSTITUT FOR BIENENKUNDE',
 					link: '#',
 				},
 				{
-					img: 'djr.png',
+					title: 'TRANSPARENCY INTERNATIONAL',
 					link: '#',
 					tags: ['Tag Number 1'],
 				},
 				{
-					img: 'daas.png',
+					title: 'BAR JEDER VERNUNFT',
 					link: '#',
 					tags: ['Tag Number O', 'Tag Number M'],
 				},
 				{
-					img: 'ti.png',
+					title: 'LANDERINSTITUT FOR BIENENKUNDE',
 					link: '#',
 					tags: ['Tag Number O'],
 				},
 				{
-					img: 'dh.png',
+					title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG ',
 					link: '#',
 					tags: ['Tag Number Z', 'Tag Number N'],
 				},
 				{
-					img: 'vhw.png',
+					title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG ',
 					link: '#',
-					tags: ['Tag Number 1', 'Tag Number Z', 'Tag Number N'],
+					tags: ['Tag Number Z', 'Tag Number N'],
 				},
 				{
-					img: 'lib.png',
+					title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG ',
 					link: '#',
-					tags: ['Tag Number Two'],
+					tags: ['Tag Number Z', 'Tag Number N'],
 				},
 				{
-					img: 'mev.png',
+					title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG ',
 					link: '#',
-					tags: ['Tag Number Two'],
+					tags: ['Tag Number Z', 'Tag Number N'],
 				},
 				{
-					img: 'bjr.png',
+					title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG ',
 					link: '#',
-					tags: ['Tag Number 1'],
+					tags: ['Tag Number Z', 'Tag Number N'],
 				},
 			]
 			this.marketingTranslationFilter = [
@@ -215,53 +223,53 @@ Vue.component('marketing-translation', {
 						this.marketingTranslationAll.push(
 							...[
 								{
-									img: 'bjr.png',
+									title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG',
 									link: '#',
 									tags: ['Tag Number 1'],
 								},
 								{
-									img: 'bdd.png',
+									title: 'LANDERINSTITUT FOR BIENENKUNDE',
 									link: '#',
 								},
 								{
-									img: 'djr.png',
+									title: 'TRANSPARENCY INTERNATIONAL',
 									link: '#',
 									tags: ['Tag Number 1'],
 								},
 								{
-									img: 'daas.png',
+									title: 'BAR JEDER VERNUNFT',
 									link: '#',
 									tags: ['Tag Number O', 'Tag Number M'],
 								},
 								{
-									img: 'ti.png',
+									title: 'LANDERINSTITUT FOR BIENENKUNDE',
 									link: '#',
 									tags: ['Tag Number O'],
 								},
 								{
-									img: 'dh.png',
+									title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG ',
 									link: '#',
 									tags: ['Tag Number Z', 'Tag Number N'],
 								},
 								{
-									img: 'vhw.png',
+									title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG ',
 									link: '#',
-									tags: ['Tag Number 1', 'Tag Number Z', 'Tag Number N'],
+									tags: ['Tag Number Z', 'Tag Number N'],
 								},
 								{
-									img: 'lib.png',
+									title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG ',
 									link: '#',
-									tags: ['Tag Number Two'],
+									tags: ['Tag Number Z', 'Tag Number N'],
 								},
 								{
-									img: 'mev.png',
+									title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG ',
 									link: '#',
-									tags: ['Tag Number Two'],
+									tags: ['Tag Number Z', 'Tag Number N'],
 								},
 								{
-									img: 'bjr.png',
+									title: 'BUNDESVERBAND WOGNEN UND STADTENTWICKLUG ',
 									link: '#',
-									tags: ['Tag Number 1'],
+									tags: ['Tag Number Z', 'Tag Number N'],
 								},
 							],
 						)
