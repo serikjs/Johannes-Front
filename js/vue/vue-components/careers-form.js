@@ -129,22 +129,72 @@ Vue.component('careers-form', {
 					'Publishable',
 				],
 				areasExpertise: [
-					'General',
-					'Marketing / PR',
-					'Economics',
-					'Finance',
-					'Legal',
-					'Medical/ Pharma',
-					'Engineering/ Technical',
-					'Architecture',
-					'Construction',
-					'Science',
-					'Trade',
-					'IT / Software / Gaming',
-					'Media / Communication',
-					'Tourism',
-					' E-Commerce / Product Descriptions',
-					'Other Specialisation',
+					{
+						title: 'General',
+						write: false,
+					},
+					{
+						title: 'Marketing / PR',
+						write: false,
+					},
+					{
+						title: 'Economics',
+						write: false,
+					},
+					{
+						title: 'Finance',
+						write: false,
+					},
+					{
+						title: 'Legal',
+						write: false,
+					},
+
+					{
+						title: 'Medical/ Pharma',
+						write: false,
+					},
+					{
+						title: 'Engineering/ Technical',
+						write: false,
+					},
+					{
+						title: 'Architecture',
+						write: false,
+					},
+					{
+						title: 'Construction',
+						write: false,
+					},
+					{
+						title: 'Science',
+						write: false,
+					},
+					{
+						title: 'Trade',
+						write: false,
+					},
+					{
+						title: 'IT / Software / Gaming',
+						write: false,
+					},
+					{
+						title: 'Media / Communication',
+						write: false,
+					},
+					{
+						title: 'Tourism',
+						write: false,
+					},
+
+					{
+						title: 'E-Commerce / Product Descriptions',
+						write: false,
+					},
+					{
+						title: 'Other Specialisation',
+						write: true,
+					},
 				],
 				toolsTranslate: {
 					'CAT Tools': [
@@ -363,30 +413,66 @@ Vue.component('careers-form', {
 					],
 				},
 				specify: [
-					'Content Creation (e.g. Blogs, Websites)',
-					'SEO Writing',
-					'Transcreation',
-					'Creative Writing ',
-					'Other Content Creation Experience',
+					{
+						title: 'Content Creation (e.g. Blogs, Websites)',
+						write: false,
+					},
+					{
+						title: 'SEO Writing',
+						write: false,
+					},
+					{
+						title: 'Transcreation',
+						write: false,
+					},
+					{
+						title: 'Creative Writing ',
+						write: false,
+					},
+					{
+						title: 'Other Content Creation Experience',
+						write: true,
+					},
 				],
 				qualifications: [
-					'PHD',
-					'Master / German Diploma',
-					'Bachelor',
-					'College/ Degrees',
-					'High School Diploma',
-					'Others',
+					{
+						title: 'PHD',
+						write: false,
+					},
+					{
+						title: 'Master / German Diploma',
+						write: false,
+					},
+					{
+						title: 'Bachelor',
+						write: false,
+					},
+					{
+						title: 'College/ Degrees',
+						write: false,
+					},
+					{
+						title: 'High School Diploma',
+						write: false,
+					},
+					{
+						title: 'Others',
+						write: true,
+					},
 				],
 			},
 			isTranslationExperience: false,
 			isTranslationUsed: false,
 			isAreasExpertise: false,
+			areasExpertiseOther: '',
 			isToolsTranslate: false,
 			toolsTranslateOther: '',
 			isTechnicalSkills: false,
 			technicalSkillsOther: '',
 			isSpecify: false,
+			specifyOther: '',
 			isQualifications: false,
+			qualificationsOther: '',
 
 			careersSteps: null,
 			careersStep: 0,
@@ -529,7 +615,7 @@ Vue.component('careers-form', {
 														<span>
 															{{careers.block1.translationExperience.value}}
 														</span>
-														<i class="dropdawn__arrow"></i>
+														
 													</div>
 													<div class="dropdawn__content">
 														<ul class="dropdawn__options">
@@ -698,24 +784,27 @@ Vue.component('careers-form', {
 														<ul class="dropdawn__options">
 															<li
 																v-for="el in careersData.areasExpertise"
-																@click="updateAreasExpertise(el)"
+																@click="updateAreasExpertise(el.title,el.write)"
 															>
-																{{el}}
+																{{el.title}}
 															</li>
 														</ul>
 													</div>
 												</div>
 											
 											</label>
-											<label class="careers-calc__form-label" v-if="careers.block1.areasExpertise.value.indexOf('Other Specialisation')>=0">
+
+											</label>
+													<label class="careers-calc__form-label" v-if="areasExpertiseOther != ''">
+													{{areasExpertiseOther}}
 													<input
 													type="text"
 													name="otherArea"
 													id="otherArea"
-													@change="onInputOther($event.target,careers.block1.areasExpertise)"
+													@change="onInputOtherMore($event.target,careers.block1.areasExpertise,areasExpertiseOther)"
 													class="careers-calc__form-input" />
 											</label>
-
+										
 											<label class="careers-calc__form-label">
 											<p class="careers-calc__form-subtitle">
  													Which tools do you use to translate?
@@ -1018,26 +1107,28 @@ Vue.component('careers-form', {
 														<span v-else>
 															Select anything
 														</span>
-														<i class="dropdawn__arrow"></i>
+														
 													</div>
 													<div class="dropdawn__content">
 														<ul class="dropdawn__options">
 															<li
 																v-for="item in careersData.specify"
-																@click="updateSpecify(item)"
+																@click="updateSpecify(item.title,item.write)"
 															>
-																{{item}}
+																{{item.title}}
 															</li>
 														</ul>
 													</div>
 												</div>
+
 											</label>
-													<label class="careers-calc__form-label" v-if="careers.block2.specify.value.indexOf('Other Content Creation Experience')>=0 && careers.block2.creationExperience.value == 'true'">
+											<label class="careers-calc__form-label" v-if="specifyOther != '' && careers.block2.creationExperience.value == 'true'">
+													{{specifyOther}}
 													<input
 													type="text"
-													name="otherArea"
-													id="otherArea"
-													@change="onInputOther($event.target,careers.block2.specify)"
+													name="otherspecify"
+													id="otherspecify"
+													@change="onInputOther($event.target,careers.block2.specify,specifyOther)"
 													class="careers-calc__form-input" />
 											</label>
 
@@ -1099,22 +1190,23 @@ Vue.component('careers-form', {
 															<ul class="dropdawn__options">
 																<li
 																	v-for="el in careersData.qualifications"
-																	@click="updateQualifications(el)"
+																	@click="updateQualifications(el.title,el.write)"
 																>
-																	{{el}}
+																	{{el.title}}
 																</li>
 															</ul>
-														</div>
+													</div>
 													</div>
 												</div>
 											</label>
 
-											<label class="careers-calc__form-label" v-if="careers.block2.qualifications.value.indexOf('Others')>=0">
+											<label class="careers-calc__form-label" v-if="qualificationsOther != ''">
+													{{qualificationsOther}}
 													<input
 													type="text"
-													name="otherQualifications"
+													name="otherArea"
 													id="otherArea"
-													@change="onInputOther($event.target,careers.block2.qualifications)"
+													@change="onInputOtherMore($event.target,careers.block2.qualifications,qualificationsOther)"
 													class="careers-calc__form-input" />
 											</label>
 											<button
@@ -1220,10 +1312,9 @@ Vue.component('careers-form', {
 
 			box.class = box.isValid ? 'valid' : 'error'
 		},
-		onInputOther(target, box) {
-			box.value.push(target.value)
-			this.careers.block1.areasExpertise.class = 'valid'
-			target.value = ''
+		onInputOther(target, box, key) {
+			box.value = `${key}/${target.value}`
+			box.class = 'valid'
 		},
 		isValidCheck(val, pat) {
 			return pat.test(val)
@@ -1246,9 +1337,16 @@ Vue.component('careers-form', {
 				this.careers.block1.translationUsed.class = 'error'
 			}
 		},
-		updateAreasExpertise(val) {
-			if (!this.careers.block1.areasExpertise.value.find(el => el === val)) {
+		updateAreasExpertise(val, isWrite) {
+			if (
+				!this.careers.block1.areasExpertise.value.find(el => el === val) &&
+				!isWrite
+			) {
 				this.careers.block1.areasExpertise.value.push(val)
+				this.areasExpertiseOther = ''
+			}
+			if (isWrite) {
+				this.areasExpertiseOther = `${val}`
 			}
 			this.careers.block1.areasExpertise.class = 'valid'
 			this.isAreasExpertise = false
@@ -1291,7 +1389,7 @@ Vue.component('careers-form', {
 		},
 		onInputOtherMore(target, box, key) {
 			box.value.push(`${key}/${target.value}`)
-			this.careers.block1.toolsTranslate.class = 'valid'
+			box.class = 'valid'
 			target.value = ''
 		},
 		updateTechnicalSkills(val, key, isWrite) {
@@ -1311,17 +1409,30 @@ Vue.component('careers-form', {
 		delTechnicalSkills(index) {
 			this.careers.block2.technicalSkills.value.splice(index, 1)
 		},
-		updateSpecify(val) {
+		updateSpecify(val, isWrite) {
 			this.careers.block2.specify.value = val
+			if (!isWrite) {
+				this.specifyOther = ''
+			}
+			if (isWrite) {
+				this.specifyOther = val
+			}
 			this.isSpecify = false
 		},
 
-		updateQualifications(val) {
-			if (!this.careers.block2.qualifications.value.find(el => el === val)) {
+		updateQualifications(val, isWrite) {
+			if (
+				!this.careers.block2.qualifications.value.find(el => el === val) &&
+				!isWrite
+			) {
 				this.careers.block2.qualifications.value.push(val)
+				this.qualificationsOther = ''
+			}
+			if (isWrite) {
+				this.qualificationsOther = `${val}`
 			}
 			this.careers.block2.qualifications.class = 'valid'
-			this.isQualifications = false
+			this.qualifications = false
 		},
 		delQualifications(index) {
 			this.careers.block2.qualifications.value.splice(index, 1)
